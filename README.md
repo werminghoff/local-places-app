@@ -1,5 +1,13 @@
 # local-places-app
 
+### Instructions:
+
+1. Open the project through the `LocalPlaces.xcodeproj` file.
+2. Xcode should fetch the dependencies (described below) automatically.
+3. Edit `GooglePlacesAPIService.swift` to add your own API key in the `apiKey` property, then run the project.
+4. Run the project (`cmd+R`)
+
+
 ### Libraries used (through Swift Package Manager):
 * Resolver: https://github.com/hmlongco/Resolver
   * Used as dependency injection system
