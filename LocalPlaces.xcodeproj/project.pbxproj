@@ -28,6 +28,11 @@
 		1540A6C724156501002AE1AD /* AbstractSortingTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6C624156501002AE1AD /* AbstractSortingTypePicker.swift */; };
 		1540A6CA2415656B002AE1AD /* SortingTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6C92415656B002AE1AD /* SortingTypePickerViewController.swift */; };
 		1540A6CC241565BF002AE1AD /* FilterTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6CB241565BF002AE1AD /* FilterTypePickerViewController.swift */; };
+		1540A6CE241570DF002AE1AD /* DetailViewContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6CD241570DF002AE1AD /* DetailViewContract.swift */; };
+		1540A6D324157204002AE1AD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6D224157204002AE1AD /* DetailViewController.swift */; };
+		1540A6D524157248002AE1AD /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6D424157248002AE1AD /* DetailPresenter.swift */; };
+		1540A6D724157356002AE1AD /* AbstractReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6D624157356002AE1AD /* AbstractReview.swift */; };
+		1556E07B24157DB8009DDC52 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1556E07A24157DB8009DDC52 /* ReviewTableViewCell.swift */; };
 		1569ABC4241424E000E5786E /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 1569ABC3241424E000E5786E /* Resolver */; };
 		1569ABC6241426A700E5786E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABC5241426A700E5786E /* MainViewController.swift */; };
 		1569ABD424142A0400E5786E /* AbstractLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABD324142A0400E5786E /* AbstractLocationService.swift */; };
@@ -84,6 +89,11 @@
 		1540A6C624156501002AE1AD /* AbstractSortingTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractSortingTypePicker.swift; sourceTree = "<group>"; };
 		1540A6C92415656B002AE1AD /* SortingTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingTypePickerViewController.swift; sourceTree = "<group>"; };
 		1540A6CB241565BF002AE1AD /* FilterTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTypePickerViewController.swift; sourceTree = "<group>"; };
+		1540A6CD241570DF002AE1AD /* DetailViewContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewContract.swift; sourceTree = "<group>"; };
+		1540A6D224157204002AE1AD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1540A6D424157248002AE1AD /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		1540A6D624157356002AE1AD /* AbstractReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractReview.swift; sourceTree = "<group>"; };
+		1556E07A24157DB8009DDC52 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		1569ABC5241426A700E5786E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1569ABD324142A0400E5786E /* AbstractLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractLocationService.swift; sourceTree = "<group>"; };
 		1569ABD524142A1300E5786E /* AbstractPlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractPlacesService.swift; sourceTree = "<group>"; };
@@ -136,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				1540A6A7241494C8002AE1AD /* PlaceTableViewCell.swift */,
+				1556E07A24157DB8009DDC52 /* ReviewTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -166,15 +177,69 @@
 			path = Generic;
 			sourceTree = "<group>";
 		};
-		1569ABC92414277A00E5786E /* Protocols */ = {
+		1540A6CF24157191002AE1AD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1569ABEF2414401E00E5786E /* MainViewContract.swift */,
+				1569ABC5241426A700E5786E /* MainViewController.swift */,
+				1569ABF12414402600E5786E /* MainPresenter.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		1540A6D02415719D002AE1AD /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				1540A6CD241570DF002AE1AD /* DetailViewContract.swift */,
+				1540A6D224157204002AE1AD /* DetailViewController.swift */,
+				1540A6D424157248002AE1AD /* DetailPresenter.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		1540A6D1241571A2002AE1AD /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				1540A6C92415656B002AE1AD /* SortingTypePickerViewController.swift */,
+				1540A6CB241565BF002AE1AD /* FilterTypePickerViewController.swift */,
+			);
+			path = Pickers;
+			sourceTree = "<group>";
+		};
+		1540A6D82415735B002AE1AD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1569ABE22414385B00E5786E /* AbstractPlace.swift */,
+				1540A6D624157356002AE1AD /* AbstractReview.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1540A6D924157363002AE1AD /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				1569ABD324142A0400E5786E /* AbstractLocationService.swift */,
 				1569ABD524142A1300E5786E /* AbstractPlacesService.swift */,
-				1569ABE22414385B00E5786E /* AbstractPlace.swift */,
-				1540A6BC24154DF6002AE1AD /* SelectableEnumerator.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1540A6DA2415736C002AE1AD /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
 				1540A6C424156489002AE1AD /* AbstractFilterTypePicker.swift */,
 				1540A6C624156501002AE1AD /* AbstractSortingTypePicker.swift */,
+			);
+			path = Pickers;
+			sourceTree = "<group>";
+		};
+		1569ABC92414277A00E5786E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1540A6DA2415736C002AE1AD /* Pickers */,
+				1540A6D924157363002AE1AD /* Services */,
+				1540A6D82415735B002AE1AD /* Models */,
+				1540A6BC24154DF6002AE1AD /* SelectableEnumerator.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -239,12 +304,10 @@
 		1569ABEE24143FF300E5786E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				1540A6D1241571A2002AE1AD /* Pickers */,
+				1540A6D02415719D002AE1AD /* Detail */,
+				1540A6CF24157191002AE1AD /* Main */,
 				1540A6C824156551002AE1AD /* Generic */,
-				1569ABEF2414401E00E5786E /* MainViewContract.swift */,
-				1569ABC5241426A700E5786E /* MainViewController.swift */,
-				1569ABF12414402600E5786E /* MainPresenter.swift */,
-				1540A6C92415656B002AE1AD /* SortingTypePickerViewController.swift */,
-				1540A6CB241565BF002AE1AD /* FilterTypePickerViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -443,7 +506,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1540A6D324157204002AE1AD /* DetailViewController.swift in Sources */,
 				15B43AF324141658002E5EE3 /* AppDelegate.swift in Sources */,
+				1540A6D724157356002AE1AD /* AbstractReview.swift in Sources */,
 				1540A6A024144BF9002AE1AD /* MockedPlacesService.swift in Sources */,
 				1540A6BB24154CF9002AE1AD /* Coordinate+CoreLocation.swift in Sources */,
 				1569ABF22414402600E5786E /* MainPresenter.swift in Sources */,
@@ -466,6 +531,7 @@
 				1569ABEA24143D4200E5786E /* AppCoordinator.swift in Sources */,
 				1569ABD624142A1300E5786E /* AbstractPlacesService.swift in Sources */,
 				1540A6A8241494C8002AE1AD /* PlaceTableViewCell.swift in Sources */,
+				1556E07B24157DB8009DDC52 /* ReviewTableViewCell.swift in Sources */,
 				1540A6A424145694002AE1AD /* MockedLocationService.swift in Sources */,
 				1540A6BF24154F5B002AE1AD /* EnumPickerViewController.swift in Sources */,
 				1540A6B924154773002AE1AD /* SortingType.swift in Sources */,
@@ -474,6 +540,8 @@
 				1569ABF02414401E00E5786E /* MainViewContract.swift in Sources */,
 				1540A6A624148D25002AE1AD /* Coordinate.swift in Sources */,
 				1540A6B72415412F002AE1AD /* Array+RawRepresentable.swift in Sources */,
+				1540A6CE241570DF002AE1AD /* DetailViewContract.swift in Sources */,
+				1540A6D524157248002AE1AD /* DetailPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

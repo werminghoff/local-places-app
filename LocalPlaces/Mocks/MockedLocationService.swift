@@ -12,7 +12,7 @@ class MockedLocationService: AbstractLocationService {
     
     func fetch(_ callback: @escaping (Coordinate?) -> Void) {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             callback(Coordinate(latitude: -30.022834, longitude: -51.183083))
         }
         

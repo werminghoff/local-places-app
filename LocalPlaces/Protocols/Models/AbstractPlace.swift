@@ -7,10 +7,14 @@
 //
 
 import Foundation
-import CoreLocation
 
 protocol AbstractPlace {
     
+    /**
+     This place's identifier
+     */
+    var id: String { get }
+
     /**
      This place's name
      */

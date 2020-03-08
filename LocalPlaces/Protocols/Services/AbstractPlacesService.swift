@@ -13,6 +13,9 @@ protocol AbstractPlacesService: class {
     
     typealias ErrorMessage = String
     typealias FetchPlacesCallback = (([AbstractPlace]?, ErrorMessage?) -> Void)
+    typealias FetchReviewsCallback = (([AbstractReview]?, ErrorMessage?) -> Void)
+    
     func fetchNear(coordinate: Coordinate, callback: FetchPlacesCallback?)
+    func fetchReviews(for place: AbstractPlace, callback: FetchReviewsCallback?)
     
 }

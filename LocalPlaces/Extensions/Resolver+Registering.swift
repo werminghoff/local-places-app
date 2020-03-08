@@ -11,15 +11,20 @@ import Resolver
 extension Resolver: ResolverRegistering {
     public static func registerAllServices() {
         registerViews()
+        registerPresenters()
         registerServices()
     }
     
     private static func registerViews() {
         register { MainViewController() as AbstractMainView }
-        register { MainPresenter() as AbstractMainPresenter }
-        
+        register { DetailViewController() as AbstractDetailView }
         register { SortingTypePickerViewController() as AbstractSortingTypePicker}
         register { FilterTypePickerViewController() as AbstractFilterTypePicker}
+    }
+    
+    private static func registerPresenters() {
+        register { MainPresenter() as AbstractMainPresenter }
+        register { DetailPresenter() as AbstractDetailPresenter }
     }
     
     private static func registerServices() {

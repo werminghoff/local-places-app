@@ -15,6 +15,7 @@ class AppCoordinator {
     @Injected private var mainPresenter: AbstractMainPresenter
     @Injected private var sortingTypePicker: AbstractSortingTypePicker
     @Injected private var filterTypePicker: AbstractFilterTypePicker
+    @Injected private var detailPresenter: AbstractDetailPresenter
     
     init() {
         mainPresenter.view.set(delegate: self)
@@ -26,7 +27,8 @@ class AppCoordinator {
 extension AppCoordinator: AbstractMainViewDelegate {
     
     func mainViewSelected(_ place: AbstractPlace) {
-        print("Selected: \(place.name)")
+        detailPresenter.set(place: place)
+        rootViewController.show(detailPresenter.view as! UIViewController, sender: nil)
     }
     
     func mainViewSelectFilters(_ callback: @escaping (([FilterType])-> Void)) {
