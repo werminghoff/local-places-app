@@ -16,7 +16,7 @@ class GooglePlacesAPIService: NSObject, AbstractPlacesService {
     
     func fetchNear(coordinate: Coordinate, callback: FetchPlacesCallback?) {
         
-        let types = ["bar" /*, "cafe", "restaurant" */]
+        let types = ["bar" , "cafe", "restaurant"]
         let group = DispatchGroup()
         
         var results: [GooglePlaceModel.Place] = []
@@ -37,7 +37,7 @@ class GooglePlacesAPIService: NSObject, AbstractPlacesService {
                        method: .get,
                        parameters: urlParams)
                 .validate(statusCode: 200..<300)
-                .responseDecodable(of: GooglePlaceModel.Response.self) { (response) in
+                .responseDecodable(of: GooglePlaceModel.ResponseMultiple.self) { (response) in
                     
                     let responseObject = try? response.result.get()
                     
@@ -101,6 +101,30 @@ class GooglePlacesAPIService: NSObject, AbstractPlacesService {
     
     func fetchReviews(for place: AbstractPlace, callback: FetchReviewsCallback?) {
         
+        //
+        // Parameters
+        let urlParams = [
+            "place_id": place.id,
+            "fields": "review",
+            "key": apiKey,
+        ]
+        
+        // Fetch
+        AF.request("https://maps.googleapis.com/maps/api/place/details/json",
+                   method: .get,
+                   parameters: urlParams)
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: GooglePlaceModel.ResponseReviews.self) { (response) in
+                
+                let responseObject = try? response.result.get()
+                
+                if let responseObject = responseObject,
+                    let reviews = responseObject.result?.reviews {
+                    callback?(reviews, nil)
+                } else {
+                    callback?(nil, "Failed to fetch reviews")
+                }
+        }
     }
     
 }

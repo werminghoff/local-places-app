@@ -47,12 +47,24 @@ struct GooglePlaceModel {
         let openNow: Bool?
     }
     
+    struct Review: Decodable {
+        enum CodingKeys: String, CodingKey {
+            case author = "author_name"
+            case rating
+            case text
+        }
+        
+        let author: String
+        let rating: Double
+        let text: String
+    }
+    
     struct Place: Decodable {
         enum CodingKeys: String, CodingKey {
             case geometry
             case iconUrl = "icon"
             case photos
-            case id
+            case id = "place_id"
             case name
             case openingHours = "opening_hours"
             case rating
@@ -68,29 +80,29 @@ struct GooglePlaceModel {
         var distance: Double = 0.0
         var formattedDistance: String = ""
     }
+    
+    enum ResponseStatus: String, Decodable {
+        /// OK indicates that no errors occurred; the place was successfully detected and at least one result was returned.
+        case ok = "OK"
+        
+        /// ZERO_RESULTS indicates that the search was successful but returned no results. This may occur if the search was passed a latlng in a remote location.
+        case zeroResults = "ZERO_RESULTS"
+        
+        // OVER_QUERY_LIMIT indicates that you are over your quota.
+        case overQueryLimit = "OVER_QUERY_LIMIT"
+        
+        /// REQUEST_DENIED indicates that your request was denied, generally because of lack of an invalid key parameter.
+        case requestDenied = "REQUEST_DENIED"
+        
+        /// INVALID_REQUEST generally indicates that a required query parameter (location or radius) is missing.
+        case invalidRequest = "INVALID_REQUEST"
+        
+        /// UNKNOWN_ERROR indicates a server-side error; trying again may be successful.
+        case unknownError = "UNKNOWN_ERROR"
+    }
 
-    struct Response: Decodable {
-        
-        enum Status: String, Decodable {
-            /// OK indicates that no errors occurred; the place was successfully detected and at least one result was returned.
-            case ok = "OK"
-            
-            /// ZERO_RESULTS indicates that the search was successful but returned no results. This may occur if the search was passed a latlng in a remote location.
-            case zeroResults = "ZERO_RESULTS"
-            
-            // OVER_QUERY_LIMIT indicates that you are over your quota.
-            case overQueryLimit = "OVER_QUERY_LIMIT"
-            
-            /// REQUEST_DENIED indicates that your request was denied, generally because of lack of an invalid key parameter.
-            case requestDenied = "REQUEST_DENIED"
-            
-            /// INVALID_REQUEST generally indicates that a required query parameter (location or radius) is missing.
-            case invalidRequest = "INVALID_REQUEST"
-            
-            /// UNKNOWN_ERROR indicates a server-side error; trying again may be successful.
-            case unknownError = "UNKNOWN_ERROR"
-        }
-        
+    struct ResponseMultiple: Decodable {
+    
         enum CodingKeys: String, CodingKey {
             case nextPageToken = "next_page_token"
             case results
@@ -104,17 +116,46 @@ struct GooglePlaceModel {
         let results: [Place]
         
         /// `status` contains metadata on the request.
-        let status: Status?
+        let status: ResponseStatus?
+        
+    }
+    
+    struct PlaceReviews: Decodable {
+        enum CodingKeys: String, CodingKey {
+            case reviews
+        }
+        
+        var reviews: [Review]?
+    }
+    
+    struct ResponseReviews: Decodable {
+        
+        enum CodingKeys: String, CodingKey {
+            case result
+            case status = "status"
+        }
+        
+        /// `result` contains a single place
+        let result: PlaceReviews?
+        
+        /// `status` contains metadata on the request.
+        let status: ResponseStatus?
         
     }
 
 }
 
-//// MARK: - AbstractPlace
+// MARK: - AbstractPlace
 extension GooglePlaceModel.Place: AbstractPlace {
 
     var coordinate: Coordinate { Coordinate(latitude: self.geometry.location.latitude, longitude: self.geometry.location.longitude) }
     var isOpenNow: Bool? { self.openingHours?.openNow }
     var photoIdentifier: String? { self.photos?.compactMap({ $0.reference }).first }
 
+}
+
+
+// MARK: - AbstractReview
+extension GooglePlaceModel.Review: AbstractReview {
+    var username: String { self.author }
 }
