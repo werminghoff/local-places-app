@@ -11,7 +11,8 @@ import CoreLocation
 
 protocol AbstractLocationService: class {
     
-    typealias LocationUpdatedCallback = ((Coordinate?) -> Void)
+    typealias ErrorMessage = String
+    typealias LocationUpdatedCallback = ((Coordinate?, ErrorMessage?) -> Void)
     func fetch(_ callback: @escaping LocationUpdatedCallback)
     
 }

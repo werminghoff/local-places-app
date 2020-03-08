@@ -45,6 +45,7 @@
 		1569ABF02414401E00E5786E /* MainViewContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABEF2414401E00E5786E /* MainViewContract.swift */; };
 		1569ABF22414402600E5786E /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABF12414402600E5786E /* MainPresenter.swift */; };
 		158D4BEA241580DD000CB13D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 158D4BE9241580DD000CB13D /* Alamofire */; };
+		158D4BEC241584E8000CB13D /* CoreLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D4BEB241584E8000CB13D /* CoreLocationService.swift */; };
 		15B43AF324141658002E5EE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B43AF224141658002E5EE3 /* AppDelegate.swift */; };
 		15B43AFC2414165B002E5EE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15B43AFB2414165B002E5EE3 /* Assets.xcassets */; };
 		15B43B0A2414165B002E5EE3 /* LocalPlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B43B092414165B002E5EE3 /* LocalPlacesTests.swift */; };
@@ -105,6 +106,7 @@
 		1569ABEC24143FCA00E5786E /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
 		1569ABEF2414401E00E5786E /* MainViewContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewContract.swift; sourceTree = "<group>"; };
 		1569ABF12414402600E5786E /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		158D4BEB241584E8000CB13D /* CoreLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationService.swift; sourceTree = "<group>"; };
 		15B43AEF24141658002E5EE3 /* LocalPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15B43AF224141658002E5EE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15B43AFB2414165B002E5EE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 		1569ABCE241427BE00E5786E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				158D4BEB241584E8000CB13D /* CoreLocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				1569ABEA24143D4200E5786E /* AppCoordinator.swift in Sources */,
 				1569ABD624142A1300E5786E /* AbstractPlacesService.swift in Sources */,
 				1540A6A8241494C8002AE1AD /* PlaceTableViewCell.swift in Sources */,
+				158D4BEC241584E8000CB13D /* CoreLocationService.swift in Sources */,
 				1556E07B24157DB8009DDC52 /* ReviewTableViewCell.swift in Sources */,
 				1540A6A424145694002AE1AD /* MockedLocationService.swift in Sources */,
 				1540A6BF24154F5B002AE1AD /* EnumPickerViewController.swift in Sources */,

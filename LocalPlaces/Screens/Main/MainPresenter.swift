@@ -23,8 +23,11 @@ class MainPresenter: AbstractMainPresenter {
         view.presenter = self
         view.loadViewIfNeeded()
         view.showLoadingIndicator()
-        locationService.fetch { [weak self] (coordinate) in
-            if let coordinate = coordinate {
+        locationService.fetch { [weak self] (coordinate, error) in
+            if let error = error {
+                self?.view.hideLoadingIndicator()
+                self?.view.show(errorMessage: error)
+            } else if let coordinate = coordinate {
                 self?.lastKnownCoordinate = coordinate
                 self?.fetchPlacesNear(coordinate)
             }
