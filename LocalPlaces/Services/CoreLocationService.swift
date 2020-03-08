@@ -29,6 +29,7 @@ class CoreLocationService: NSObject, AbstractLocationService {
     
 }
 
+// MARK: - CLLocationManagerDelegate
 extension CoreLocationService: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
