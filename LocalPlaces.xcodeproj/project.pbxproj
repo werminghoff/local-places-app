@@ -16,6 +16,7 @@
 		1540A6AC24149548002AE1AD /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6AB24149548002AE1AD /* UITableViewCellExtension.swift */; };
 		1540A6AE24149CC4002AE1AD /* UIColor+StandardColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6AD24149CC4002AE1AD /* UIColor+StandardColors.swift */; };
 		1540A6B02414A427002AE1AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1540A6AF2414A427002AE1AD /* LaunchScreen.storyboard */; };
+		1540A6B224153C67002AE1AD /* Array+Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6B124153C67002AE1AD /* Array+Places.swift */; };
 		1569ABC4241424E000E5786E /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 1569ABC3241424E000E5786E /* Resolver */; };
 		1569ABC6241426A700E5786E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABC5241426A700E5786E /* MainViewController.swift */; };
 		1569ABD424142A0400E5786E /* AbstractLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABD324142A0400E5786E /* AbstractLocationService.swift */; };
@@ -60,6 +61,7 @@
 		1540A6AB24149548002AE1AD /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
 		1540A6AD24149CC4002AE1AD /* UIColor+StandardColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+StandardColors.swift"; sourceTree = "<group>"; };
 		1540A6AF2414A427002AE1AD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1540A6B124153C67002AE1AD /* Array+Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Places.swift"; sourceTree = "<group>"; };
 		1569ABC5241426A700E5786E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1569ABD324142A0400E5786E /* AbstractLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractLocationService.swift; sourceTree = "<group>"; };
 		1569ABD524142A1300E5786E /* AbstractPlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractPlacesService.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				1540A6A9241494F6002AE1AD /* UITableView+AutoIdentifyCell.swift */,
 				1540A6AB24149548002AE1AD /* UITableViewCellExtension.swift */,
 				1540A6AD24149CC4002AE1AD /* UIColor+StandardColors.swift */,
+				1540A6B124153C67002AE1AD /* Array+Places.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				1540A6AE24149CC4002AE1AD /* UIColor+StandardColors.swift in Sources */,
 				1540A69E241449E9002AE1AD /* UIView+AutoLayout.swift in Sources */,
 				1569ABD924142AAA00E5786E /* GooglePlaceModel.swift in Sources */,
+				1540A6B224153C67002AE1AD /* Array+Places.swift in Sources */,
 				1540A6AA241494F6002AE1AD /* UITableView+AutoIdentifyCell.swift in Sources */,
 				1569ABEA24143D4200E5786E /* AppCoordinator.swift in Sources */,
 				1569ABD624142A1300E5786E /* AbstractPlacesService.swift in Sources */,

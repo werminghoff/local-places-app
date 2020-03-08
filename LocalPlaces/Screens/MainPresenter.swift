@@ -37,7 +37,7 @@ class MainPresenter: AbstractMainPresenter {
             self.view.hideLoadingIndicator()
             
             if let places = places {
-                self.places = places
+                self.places = places.sortedByRating()
                 self.updateList()
             } else if let message = message {
                 self.view.show(errorMessage: message)
