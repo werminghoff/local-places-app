@@ -28,8 +28,9 @@ extension Resolver: ResolverRegistering {
     }
     
     private static func registerServices() {
-        register { MockedPlacesService() as AbstractPlacesService }
+        //register { MockedPlacesService() as AbstractPlacesService }
         //register { MockedLocationService() as AbstractLocationService }
+        register { GooglePlacesAPIService() as AbstractPlacesService }
         register { CoreLocationService() as AbstractLocationService }
         
     }

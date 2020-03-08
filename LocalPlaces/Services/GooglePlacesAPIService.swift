@@ -15,7 +15,28 @@ class GooglePlacesAPIService: NSObject, AbstractPlacesService {
     
     func fetchNear(coordinate: Coordinate, callback: FetchPlacesCallback?) {
         
-        
+        // Add URL parameters
+        let urlParams = [
+            "location": "\(coordinate.latitude),\(coordinate.longitude)",
+            "radius": "500",
+            "key": apiKey,
+        ]
+
+        // Fetch Request
+        AF.request("https://maps.googleapis.com/maps/api/place/nearbysearch/json",
+                   method: .get,
+                   parameters: urlParams)
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: GooglePlaceModel.Response.self) { (response) in
+                
+                let responseObject = try? response.result.get()
+                
+                if let responseObject = responseObject {
+                    callback?(responseObject.results, nil)
+                } else {
+                    callback?(nil, "Failed to fetch local places")
+                }
+            }
         
     }
     
