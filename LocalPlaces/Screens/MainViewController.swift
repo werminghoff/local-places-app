@@ -10,9 +10,11 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    weak var presenter: AbstractMainPresenter?
+    
+    private let refreshControl = UIRefreshControl()
     private weak var delegate: AbstractMainViewDelegate?
     private let tableView = UITableView.autoLayout()
-    private let activityIndicator = UIActivityIndicatorView.autoLayout()
     private var places: [AbstractPlace] = []
     
     override func viewDidLoad() {
@@ -22,10 +24,9 @@ class MainViewController: UIViewController {
         setupConstraints()
     }
     
-    func setupViews() {
+    private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(tableView)
-        view.addSubview(activityIndicator)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -33,18 +34,24 @@ class MainViewController: UIViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(PlaceTableViewCell.self)
         
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self,
+                                 action: #selector(refreshNearbyPlaces),
+                                 for: .valueChanged)
+        
         title = "Local Places"
     }
     
-    func setupConstraints() {
+    @objc private func refreshNearbyPlaces() {
+        presenter?.refreshPlacesList()
+    }
+    
+    private func setupConstraints() {
         view.addConstraints([
             tableView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             tableView.heightAnchor.constraint(equalTo: view.heightAnchor),
             tableView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            
-            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
     
@@ -68,14 +75,12 @@ extension MainViewController: AbstractMainView {
         tableView.reloadData()
     }
     
-    func showInitialLoadIndicator() {
-        tableView.isHidden = true
-        activityIndicator.startAnimating()
+    func showLoadingIndicator() {
+        refreshControl.beginRefreshing()
     }
     
-    func hideInitialLoadIndicator() {
-        tableView.isHidden = false
-        activityIndicator.stopAnimating()
+    func hideLoadingIndicator() {
+        refreshControl.endRefreshing()
     }
  
     func setDelegate(_ delegate: AbstractMainViewDelegate) {

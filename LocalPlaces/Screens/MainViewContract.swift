@@ -13,13 +13,17 @@ protocol AbstractMainViewDelegate: class {
 }
 
 protocol AbstractMainView: class {
+    var presenter: AbstractMainPresenter? { get set }
     func show(places: [AbstractPlace])
     func show(errorMessage: String)
-    func showInitialLoadIndicator()
-    func hideInitialLoadIndicator()
+    func showLoadingIndicator()
+    func hideLoadingIndicator()
     func setDelegate(_ delegate: AbstractMainViewDelegate)
+    func loadViewIfNeeded()
 }
 
 protocol AbstractMainPresenter: class {
     var view: AbstractMainView { get }
+    
+    func refreshPlacesList()
 }
