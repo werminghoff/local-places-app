@@ -9,6 +9,9 @@
 import Foundation
 import Resolver
 
+/**
+ PropertyWrapper used to hide the underlying dependency injection system
+ */
 @propertyWrapper
 struct Injected<T> {
     var wrappedValue: T

@@ -38,5 +38,16 @@ protocol AbstractPlace {
      */
     var photoUrls: [URL] { get }
     
+    /**
+     This place's distance to the current location.
+     - Note: This value should be calculated and stored by the application
+     */
+    var distance: Double { get set }
+    
+    /**
+     A string representation of this place's distance to the current location
+     - Note: This value should be calculated and stored by the application
+     */
+    var formattedDistance: String { get set }
 }
 

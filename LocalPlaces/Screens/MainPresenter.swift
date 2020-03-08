@@ -16,6 +16,8 @@ class MainPresenter: AbstractMainPresenter {
     private var lastKnownCoordinate: Coordinate?
     
     private var places: [AbstractPlace] = []
+    private var filters: [FilterType] = []
+    private var sorting: SortingType = .ratingHigher
     
     init() {
         view.presenter = self
@@ -36,13 +38,13 @@ class MainPresenter: AbstractMainPresenter {
             
             self.view.hideLoadingIndicator()
             
-            if let places = places {
-                self.places = places.sortedByRating()
-                self.updateList()
-            } else if let message = message {
+            if let message = message {
                 self.view.show(errorMessage: message)
+            } else {
+                self.places = places ?? []
+                self.updateDistances()
+                self.updateList()
             }
-            
         }
         
     }
@@ -54,7 +56,66 @@ class MainPresenter: AbstractMainPresenter {
         }
     }
     
+    func set(sorting: SortingType) {
+        self.sorting = sorting
+        updateList()
+    }
+    
+    func set(filters: [FilterType]) {
+        self.filters = filters
+        updateList()
+    }
+    
+    private func updateDistances() {
+        if let lastKnownCoordinate = self.lastKnownCoordinate {
+            for idx in places.indices {
+                places[idx].distance = places[idx].coordinate.distance(to: lastKnownCoordinate)
+                places[idx].formattedDistance = places[idx].coordinate.formattedDistance(to: lastKnownCoordinate)
+            }
+        }
+    }
+    
     private func updateList() {
-        view.show(places: places)
+        var placesToShow = places
+        
+        // Apply filtering, if there is one selected
+        for filter in self.filters {
+            switch filter {
+            case .withRating:
+                placesToShow = placesToShow.filter({ $0.rating != nil })
+            case .withoutRating:
+                placesToShow = placesToShow.filter({ $0.rating == nil })
+            case .open:
+                placesToShow = placesToShow.filter({ $0.isOpenNow == true })
+            case .closed:
+                placesToShow = placesToShow.filter({ $0.isOpenNow == false })
+            }
+        }
+        
+        // Apply sorting
+        switch sorting {
+        case .nameAscending:
+            placesToShow = placesToShow.sortedByNameAscending()
+        case .nameDescending:
+            placesToShow = placesToShow.sortedByNameDescending()
+        case .ratingHigher:
+            placesToShow = placesToShow.sortedByHigherRating()
+        case .ratingLower:
+            placesToShow = placesToShow.sortedByLowerRating()
+        case .distanceLower:
+            if let coordinate = lastKnownCoordinate {
+                placesToShow = placesToShow.sortedByLowerDistance(to: coordinate)
+            }
+        case .distanceHigher:
+            if let coordinate = lastKnownCoordinate {
+                placesToShow = placesToShow.sortedByHigherDistance(to: coordinate)
+            }
+        case .open:
+            placesToShow = placesToShow.sortedByOpenPlaces()
+        case .closed:
+            placesToShow = placesToShow.sortedByClosedPlaces()
+        }
+        
+        view.show(places: placesToShow)
     }
 }

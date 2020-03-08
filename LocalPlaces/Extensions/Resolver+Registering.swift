@@ -17,6 +17,9 @@ extension Resolver: ResolverRegistering {
     private static func registerViews() {
         register { MainViewController() as AbstractMainView }
         register { MainPresenter() as AbstractMainPresenter }
+        
+        register { SortingTypePickerViewController() as AbstractSortingTypePicker}
+        register { FilterTypePickerViewController() as AbstractFilterTypePicker}
     }
     
     private static func registerServices() {

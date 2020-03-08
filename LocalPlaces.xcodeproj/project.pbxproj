@@ -16,7 +16,18 @@
 		1540A6AC24149548002AE1AD /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6AB24149548002AE1AD /* UITableViewCellExtension.swift */; };
 		1540A6AE24149CC4002AE1AD /* UIColor+StandardColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6AD24149CC4002AE1AD /* UIColor+StandardColors.swift */; };
 		1540A6B02414A427002AE1AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1540A6AF2414A427002AE1AD /* LaunchScreen.storyboard */; };
-		1540A6B224153C67002AE1AD /* Array+Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6B124153C67002AE1AD /* Array+Places.swift */; };
+		1540A6B224153C67002AE1AD /* Array+AbstractPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6B124153C67002AE1AD /* Array+AbstractPlace.swift */; };
+		1540A6B524153E32002AE1AD /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6B424153E32002AE1AD /* FilterType.swift */; };
+		1540A6B72415412F002AE1AD /* Array+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6B62415412F002AE1AD /* Array+RawRepresentable.swift */; };
+		1540A6B924154773002AE1AD /* SortingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6B824154773002AE1AD /* SortingType.swift */; };
+		1540A6BB24154CF9002AE1AD /* Coordinate+CoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6BA24154CF9002AE1AD /* Coordinate+CoreLocation.swift */; };
+		1540A6BD24154DF6002AE1AD /* SelectableEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6BC24154DF6002AE1AD /* SelectableEnumerator.swift */; };
+		1540A6BF24154F5B002AE1AD /* EnumPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6BE24154F5B002AE1AD /* EnumPickerViewController.swift */; };
+		1540A6C3241554CB002AE1AD /* UIBarButtonItem+StandardButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6C2241554CB002AE1AD /* UIBarButtonItem+StandardButtons.swift */; };
+		1540A6C524156489002AE1AD /* AbstractFilterTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6C424156489002AE1AD /* AbstractFilterTypePicker.swift */; };
+		1540A6C724156501002AE1AD /* AbstractSortingTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6C624156501002AE1AD /* AbstractSortingTypePicker.swift */; };
+		1540A6CA2415656B002AE1AD /* SortingTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6C92415656B002AE1AD /* SortingTypePickerViewController.swift */; };
+		1540A6CC241565BF002AE1AD /* FilterTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6CB241565BF002AE1AD /* FilterTypePickerViewController.swift */; };
 		1569ABC4241424E000E5786E /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 1569ABC3241424E000E5786E /* Resolver */; };
 		1569ABC6241426A700E5786E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABC5241426A700E5786E /* MainViewController.swift */; };
 		1569ABD424142A0400E5786E /* AbstractLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABD324142A0400E5786E /* AbstractLocationService.swift */; };
@@ -61,7 +72,18 @@
 		1540A6AB24149548002AE1AD /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
 		1540A6AD24149CC4002AE1AD /* UIColor+StandardColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+StandardColors.swift"; sourceTree = "<group>"; };
 		1540A6AF2414A427002AE1AD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1540A6B124153C67002AE1AD /* Array+Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Places.swift"; sourceTree = "<group>"; };
+		1540A6B124153C67002AE1AD /* Array+AbstractPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+AbstractPlace.swift"; sourceTree = "<group>"; };
+		1540A6B424153E32002AE1AD /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
+		1540A6B62415412F002AE1AD /* Array+RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+RawRepresentable.swift"; sourceTree = "<group>"; };
+		1540A6B824154773002AE1AD /* SortingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingType.swift; sourceTree = "<group>"; };
+		1540A6BA24154CF9002AE1AD /* Coordinate+CoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinate+CoreLocation.swift"; sourceTree = "<group>"; };
+		1540A6BC24154DF6002AE1AD /* SelectableEnumerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableEnumerator.swift; sourceTree = "<group>"; };
+		1540A6BE24154F5B002AE1AD /* EnumPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPickerViewController.swift; sourceTree = "<group>"; };
+		1540A6C2241554CB002AE1AD /* UIBarButtonItem+StandardButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+StandardButtons.swift"; sourceTree = "<group>"; };
+		1540A6C424156489002AE1AD /* AbstractFilterTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractFilterTypePicker.swift; sourceTree = "<group>"; };
+		1540A6C624156501002AE1AD /* AbstractSortingTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractSortingTypePicker.swift; sourceTree = "<group>"; };
+		1540A6C92415656B002AE1AD /* SortingTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingTypePickerViewController.swift; sourceTree = "<group>"; };
+		1540A6CB241565BF002AE1AD /* FilterTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTypePickerViewController.swift; sourceTree = "<group>"; };
 		1569ABC5241426A700E5786E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1569ABD324142A0400E5786E /* AbstractLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractLocationService.swift; sourceTree = "<group>"; };
 		1569ABD524142A1300E5786E /* AbstractPlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractPlacesService.swift; sourceTree = "<group>"; };
@@ -127,12 +149,32 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		1540A6B324153E24002AE1AD /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				1540A6B424153E32002AE1AD /* FilterType.swift */,
+				1540A6B824154773002AE1AD /* SortingType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		1540A6C824156551002AE1AD /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				1540A6BE24154F5B002AE1AD /* EnumPickerViewController.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
 		1569ABC92414277A00E5786E /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				1569ABD324142A0400E5786E /* AbstractLocationService.swift */,
 				1569ABD524142A1300E5786E /* AbstractPlacesService.swift */,
 				1569ABE22414385B00E5786E /* AbstractPlace.swift */,
+				1540A6BC24154DF6002AE1AD /* SelectableEnumerator.swift */,
+				1540A6C424156489002AE1AD /* AbstractFilterTypePicker.swift */,
+				1540A6C624156501002AE1AD /* AbstractSortingTypePicker.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -178,7 +220,10 @@
 				1540A6A9241494F6002AE1AD /* UITableView+AutoIdentifyCell.swift */,
 				1540A6AB24149548002AE1AD /* UITableViewCellExtension.swift */,
 				1540A6AD24149CC4002AE1AD /* UIColor+StandardColors.swift */,
-				1540A6B124153C67002AE1AD /* Array+Places.swift */,
+				1540A6B124153C67002AE1AD /* Array+AbstractPlace.swift */,
+				1540A6B62415412F002AE1AD /* Array+RawRepresentable.swift */,
+				1540A6BA24154CF9002AE1AD /* Coordinate+CoreLocation.swift */,
+				1540A6C2241554CB002AE1AD /* UIBarButtonItem+StandardButtons.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -194,9 +239,12 @@
 		1569ABEE24143FF300E5786E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				1540A6C824156551002AE1AD /* Generic */,
 				1569ABEF2414401E00E5786E /* MainViewContract.swift */,
 				1569ABC5241426A700E5786E /* MainViewController.swift */,
 				1569ABF12414402600E5786E /* MainPresenter.swift */,
+				1540A6C92415656B002AE1AD /* SortingTypePickerViewController.swift */,
+				1540A6CB241565BF002AE1AD /* FilterTypePickerViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -224,6 +272,7 @@
 		15B43AF124141658002E5EE3 /* LocalPlaces */ = {
 			isa = PBXGroup;
 			children = (
+				1540A6B324153E24002AE1AD /* Enums */,
 				1540A6A224145679002AE1AD /* Mocks */,
 				1540A6A1241455DF002AE1AD /* Views */,
 				1569ABEB24143F1B00E5786E /* Annotations */,
@@ -396,24 +445,35 @@
 			files = (
 				15B43AF324141658002E5EE3 /* AppDelegate.swift in Sources */,
 				1540A6A024144BF9002AE1AD /* MockedPlacesService.swift in Sources */,
+				1540A6BB24154CF9002AE1AD /* Coordinate+CoreLocation.swift in Sources */,
 				1569ABF22414402600E5786E /* MainPresenter.swift in Sources */,
 				1540A6AC24149548002AE1AD /* UITableViewCellExtension.swift in Sources */,
+				1540A6CA2415656B002AE1AD /* SortingTypePickerViewController.swift in Sources */,
 				1569ABC6241426A700E5786E /* MainViewController.swift in Sources */,
+				1540A6C3241554CB002AE1AD /* UIBarButtonItem+StandardButtons.swift in Sources */,
 				1569ABE32414385B00E5786E /* AbstractPlace.swift in Sources */,
+				1540A6B524153E32002AE1AD /* FilterType.swift in Sources */,
 				1569ABE624143A5B00E5786E /* Resolver+Registering.swift in Sources */,
+				1540A6BD24154DF6002AE1AD /* SelectableEnumerator.swift in Sources */,
+				1540A6CC241565BF002AE1AD /* FilterTypePickerViewController.swift in Sources */,
+				1540A6C524156489002AE1AD /* AbstractFilterTypePicker.swift in Sources */,
 				1569ABED24143FCA00E5786E /* Injected.swift in Sources */,
 				1540A6AE24149CC4002AE1AD /* UIColor+StandardColors.swift in Sources */,
 				1540A69E241449E9002AE1AD /* UIView+AutoLayout.swift in Sources */,
 				1569ABD924142AAA00E5786E /* GooglePlaceModel.swift in Sources */,
-				1540A6B224153C67002AE1AD /* Array+Places.swift in Sources */,
+				1540A6B224153C67002AE1AD /* Array+AbstractPlace.swift in Sources */,
 				1540A6AA241494F6002AE1AD /* UITableView+AutoIdentifyCell.swift in Sources */,
 				1569ABEA24143D4200E5786E /* AppCoordinator.swift in Sources */,
 				1569ABD624142A1300E5786E /* AbstractPlacesService.swift in Sources */,
 				1540A6A8241494C8002AE1AD /* PlaceTableViewCell.swift in Sources */,
 				1540A6A424145694002AE1AD /* MockedLocationService.swift in Sources */,
+				1540A6BF24154F5B002AE1AD /* EnumPickerViewController.swift in Sources */,
+				1540A6B924154773002AE1AD /* SortingType.swift in Sources */,
+				1540A6C724156501002AE1AD /* AbstractSortingTypePicker.swift in Sources */,
 				1569ABD424142A0400E5786E /* AbstractLocationService.swift in Sources */,
 				1569ABF02414401E00E5786E /* MainViewContract.swift in Sources */,
 				1540A6A624148D25002AE1AD /* Coordinate.swift in Sources */,
+				1540A6B72415412F002AE1AD /* Array+RawRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

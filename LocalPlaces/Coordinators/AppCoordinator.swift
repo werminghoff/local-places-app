@@ -13,17 +13,39 @@ class AppCoordinator {
     
     lazy private(set) var rootViewController: UIViewController = UINavigationController(rootViewController: self.mainPresenter.view as! UIViewController)
     @Injected private var mainPresenter: AbstractMainPresenter
+    @Injected private var sortingTypePicker: AbstractSortingTypePicker
+    @Injected private var filterTypePicker: AbstractFilterTypePicker
     
     init() {
-        mainPresenter.view.setDelegate(self)
+        mainPresenter.view.set(delegate: self)
     }
     
 }
 
+// MARK: - AbstractMainViewDelegate
 extension AppCoordinator: AbstractMainViewDelegate {
     
     func mainViewSelected(_ place: AbstractPlace) {
         print("Selected: \(place.name)")
     }
     
+    func mainViewSelectFilters(_ callback: @escaping (([FilterType])-> Void)) {
+        filterTypePicker.callback = { [weak self] (types) in
+            callback(types)
+            self?.rootViewController.dismiss(animated: true, completion: nil)
+        }
+        let navController = UINavigationController(rootViewController: filterTypePicker as! UIViewController)
+        rootViewController.present(navController, animated: true, completion: nil)
+    }
+    
+    func mainViewSelectSorting(_ callback: @escaping ((SortingType)-> Void)) {
+        sortingTypePicker.callback = { [weak self] (type) in
+            callback(type)
+            self?.rootViewController.dismiss(animated: true, completion: nil)
+        }
+        sortingTypePicker.selectedValue = nil
+        
+        let navController = UINavigationController(rootViewController: sortingTypePicker as! UIViewController)
+        rootViewController.present(navController, animated: true, completion: nil)
+    }
 }

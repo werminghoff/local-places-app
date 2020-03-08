@@ -35,15 +35,12 @@ class MainViewController: UIViewController {
         tableView.register(PlaceTableViewCell.self)
         
         tableView.refreshControl = refreshControl
-        refreshControl.addTarget(self,
-                                 action: #selector(refreshNearbyPlaces),
-                                 for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshNearbyPlaces), for: .valueChanged)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem.filter(target: self, action: #selector(showFilterOptions))
+        navigationItem.leftBarButtonItem = UIBarButtonItem.sorting(target: self, action: #selector(showSortingOptions))
         
         title = "Local Places"
-    }
-    
-    @objc private func refreshNearbyPlaces() {
-        presenter?.refreshPlacesList()
     }
     
     private func setupConstraints() {
@@ -54,6 +51,24 @@ class MainViewController: UIViewController {
             tableView.widthAnchor.constraint(equalTo: view.widthAnchor),
         ])
     }
+    
+    @objc private func refreshNearbyPlaces() {
+        presenter?.refreshPlacesList()
+    }
+    
+    @objc private func showSortingOptions() {
+        delegate?.mainViewSelectSorting({ [weak self] (type) in
+            self?.presenter?.set(sorting: type)
+        })
+    }
+    
+    @objc private func showFilterOptions() {
+        delegate?.mainViewSelectFilters({ [weak self] (types) in
+            self?.presenter?.set(filters: types)
+        })
+    }
+    
+    
     
 }
 
@@ -76,14 +91,15 @@ extension MainViewController: AbstractMainView {
     }
     
     func showLoadingIndicator() {
-        refreshControl.beginRefreshing()
+        // FIXME: spinner doesn't animate if UIViewController doesn't have a UIWindow yet, on iOS < 13.0
+        self.refreshControl.beginRefreshing()
     }
     
     func hideLoadingIndicator() {
         refreshControl.endRefreshing()
     }
  
-    func setDelegate(_ delegate: AbstractMainViewDelegate) {
+    func set(delegate: AbstractMainViewDelegate?) {
         self.delegate = delegate
     }
 }
@@ -107,7 +123,7 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(PlaceTableViewCell.self, for: indexPath)!
+        let cell = tableView.dequeueReusableCell(PlaceTableViewCell.self, for: indexPath)
         cell.place = places[indexPath.row]
         return cell
     }

@@ -65,6 +65,8 @@ struct GooglePlaceModel {
         let openingHours: OpeningHours?
         let id: String
         let rating: Double?
+        var distance: Double = 0.0
+        var formattedDistance: String = ""
     }
 
     struct Response: Decodable {

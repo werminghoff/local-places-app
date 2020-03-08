@@ -15,7 +15,7 @@ class PlaceTableViewCell: UITableViewCell {
     private let openImageView = UIImageView.autoLayout()
     
     var place: AbstractPlace? {
-        didSet {
+        didSet{
             updateCell()
         }
     }
@@ -39,6 +39,7 @@ class PlaceTableViewCell: UITableViewCell {
         
         nameLabel.font = .preferredFont(forTextStyle: .body)
         nameLabel.textColor = .titleColor
+        nameLabel.numberOfLines = 0 // allow multi-line names
         
         ratingLabel.font = .preferredFont(forTextStyle: .caption1)
         ratingLabel.textColor = .subtitleColor
@@ -51,16 +52,19 @@ class PlaceTableViewCell: UITableViewCell {
             "openImageView": openImageView
         ]
         
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[nameLabel]-[openImageView(40)]-16-|", metrics: nil, views: views))
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[ratingLabel]-[openImageView(40)]-16-|", metrics: nil, views: views))
-        
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[nameLabel]-[openImageView]-16-|", metrics: nil, views: views))
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[nameLabel]-[ratingLabel]-|", metrics: nil, views: views))
+        
         contentView.addConstraints([
+            ratingLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            ratingLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+            
+            openImageView.widthAnchor.constraint(equalToConstant: 40),
             openImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             openImageView.widthAnchor.constraint(equalTo: openImageView.heightAnchor)
         ])
     }
-    
+  
     private func updateCell() {
         guard let place = place else {
             ratingLabel.text = ""
@@ -72,10 +76,10 @@ class PlaceTableViewCell: UITableViewCell {
         if let rating = place.rating {
             ratingLabel.text = String(format: "Rating: %01.1lf", rating)
         } else {
-            ratingLabel.text = String(format: "Rating: unknown")
+            ratingLabel.text = "Rating unavailable"
         }
         
-        nameLabel.text = place.name
+        nameLabel.text = "\(place.name) (\(place.formattedDistance))"
         
         if place.isOpenNow == true {
             openImageView.image = #imageLiteral(resourceName: "icon_open")
@@ -84,6 +88,7 @@ class PlaceTableViewCell: UITableViewCell {
         } else {
             openImageView.image = nil
         }
+        
     }
     
 }

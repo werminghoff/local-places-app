@@ -10,6 +10,8 @@ import Foundation
 
 protocol AbstractMainViewDelegate: class {
     func mainViewSelected(_ place: AbstractPlace)
+    func mainViewSelectFilters(_ callback: @escaping (([FilterType])-> Void))
+    func mainViewSelectSorting(_ callback: @escaping ((SortingType)-> Void))
 }
 
 protocol AbstractMainView: class {
@@ -18,7 +20,7 @@ protocol AbstractMainView: class {
     func show(errorMessage: String)
     func showLoadingIndicator()
     func hideLoadingIndicator()
-    func setDelegate(_ delegate: AbstractMainViewDelegate)
+    func set(delegate: AbstractMainViewDelegate?)
     func loadViewIfNeeded()
 }
 
@@ -26,4 +28,6 @@ protocol AbstractMainPresenter: class {
     var view: AbstractMainView { get }
     
     func refreshPlacesList()
+    func set(filters: [FilterType])
+    func set(sorting: SortingType)
 }
