@@ -56,6 +56,7 @@ class GooglePlacesAPIService: NSObject, AbstractPlacesService {
             } else {
                 
                 typealias PlaceID = String
+                // Just in case multiple categories return the same place, I'll remove duplicates by hashing their IDs
                 var uniquePlaces: [PlaceID: GooglePlaceModel.Place] = [:]
                 results.forEach {
                     uniquePlaces[$0.id] = $0
