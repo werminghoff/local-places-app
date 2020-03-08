@@ -85,7 +85,7 @@ class MockedPlacesService: AbstractPlacesService {
     ]
     
     func fetchNear(coordinate: Coordinate, callback: FetchPlacesCallback?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             callback?(self.places, nil)
         }
     }
@@ -93,8 +93,19 @@ class MockedPlacesService: AbstractPlacesService {
     
     func fetchReviews(for place: AbstractPlace, callback: FetchReviewsCallback?) {
         let reviews = self.reviews[place.id] ?? []
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             callback?(reviews, nil)
         }
     }
+    
+    func fetchPhoto(for place: AbstractPlace, callback: FetchPhotoCallback?) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            if place.photoUrls.first != nil {
+                callback?(#imageLiteral(resourceName: "mock-bar-photo"), nil)
+            } else {
+                callback?(nil, nil)
+            }
+        }
+    }
+    
 }

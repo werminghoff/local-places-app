@@ -20,9 +20,21 @@ class DetailPresenter: AbstractDetailPresenter {
             guard let self = self else { return }
             
             if let error = error {
+                self.view.hideReviewsLoadingIndicator()
                 self.view.show(errorMessage: error)
             } else {
                 self.view.show(reviews: reviews ?? [])
+            }
+        }
+        
+        view.showPhotoLoadingIndicator()
+        placesService.fetchPhoto(for: place) { [weak self] (image, error) in
+            guard let self = self else { return }
+            if let error = error {
+                self.view.hidePhotoLoadingIndicator()
+                self.view.show(errorMessage: error)
+            } else {
+                self.view.show(photo: image)
             }
         }
         

@@ -7,16 +7,22 @@
 //
 
 import Foundation
+import UIKit
 
 protocol AbstractDetailView: class {
     var presenter: AbstractDetailPresenter? { get set }
     func loadViewIfNeeded()
     
     func show(place: AbstractPlace)
+    func show(photo: UIImage?)
     func show(reviews: [AbstractReview])
     func show(errorMessage: String)
     
     func showReviewsLoadingIndicator()
+    func showPhotoLoadingIndicator()
+    
+    func hideReviewsLoadingIndicator()
+    func hidePhotoLoadingIndicator()
 }
 
 protocol AbstractDetailPresenter: class {

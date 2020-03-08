@@ -8,14 +8,17 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
 protocol AbstractPlacesService: class {
     
     typealias ErrorMessage = String
     typealias FetchPlacesCallback = (([AbstractPlace]?, ErrorMessage?) -> Void)
     typealias FetchReviewsCallback = (([AbstractReview]?, ErrorMessage?) -> Void)
+    typealias FetchPhotoCallback = ((UIImage?, ErrorMessage?) -> Void)
     
     func fetchNear(coordinate: Coordinate, callback: FetchPlacesCallback?)
+    func fetchPhoto(for place: AbstractPlace, callback: FetchPhotoCallback?)
     func fetchReviews(for place: AbstractPlace, callback: FetchReviewsCallback?)
     
 }
