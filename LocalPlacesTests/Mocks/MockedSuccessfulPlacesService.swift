@@ -12,7 +12,7 @@ import Foundation
 class MockedSuccessfulPlacesService: AbstractPlacesService {
     
     typealias PlaceID = String
-    private struct MockedPlaceModel: AbstractPlace {
+    struct MockedPlaceModel: AbstractPlace {
         var id: String
         var name: String
         var coordinate: Coordinate
@@ -23,13 +23,13 @@ class MockedSuccessfulPlacesService: AbstractPlacesService {
         var formattedDistance: String
     }
     
-    private struct MocketReviewModel: AbstractReview {
+    struct MocketReviewModel: AbstractReview {
         var username: String
         var rating: Double
         var text: String
     }
     
-    private let places: [AbstractPlace] = [
+    let places: [AbstractPlace] = [
         MockedPlaceModel(id: "place1",
                          name: "Place 1",
                          coordinate: Coordinate(latitude: -30.024834, longitude: -51.183043),
@@ -64,7 +64,7 @@ class MockedSuccessfulPlacesService: AbstractPlacesService {
                          formattedDistance: ""),
     ]
     
-    private let reviews: [PlaceID: [AbstractReview]] = [
+    let reviews: [PlaceID: [AbstractReview]] = [
         "place1": [
             MocketReviewModel(username: "Bruno", rating: 4.5, text: "Lorem ipsum dolor sit amet."),
             MocketReviewModel(username: "John", rating: 1.0, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum."),

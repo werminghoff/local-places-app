@@ -124,13 +124,27 @@ class MainScreenTests: XCTestCase {
         
         XCTAssertEqual(mockedPresenter.refreshPlacesListCalled, true)
     }
+    
+    func testDelegateGetsNotifiedOfPlaceSelection() {
+        let placesService = MockedSuccessfulPlacesService()
+        Resolver.register { MockedMainPresenter() as AbstractMainPresenter }
+        Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
+        Resolver.register { placesService as AbstractPlacesService }
+        
+        let presenter: AbstractMainPresenter = Resolver.resolve()
+        let place = placesService.places.first! as AbstractPlace
+        presenter.set(delegate: self)
+        presenter.userSelected(place: place)
+        
+        XCTAssertEqual(selectedPlace?.id, place.id)
+    }
 }
 
 // MARK: - AbstractMainViewDelegate
 extension MainScreenTests: AbstractMainViewDelegate {
 
     func mainViewSelected(_ place: AbstractPlace) {
-        
+        selectedPlace = place
     }
 
     func mainViewSelectFilters(with currentFilters: [FilterType]?, _ callback: @escaping (([FilterType])-> Void)) {
