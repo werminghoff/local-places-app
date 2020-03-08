@@ -13,6 +13,9 @@ class MainPresenter: AbstractMainPresenter {
     @Injected var view: AbstractMainView
     @Injected private var placesService: AbstractPlacesService
     @Injected private var locationService: AbstractLocationService
+    
+    private weak var delegate: AbstractMainViewDelegate?
+    
     private var lastKnownCoordinate: Coordinate?
     
     private var places: [AbstractPlace] = []
@@ -59,14 +62,42 @@ class MainPresenter: AbstractMainPresenter {
         }
     }
     
+    func getSorting() -> SortingType? {
+        return self.sorting
+    }
+    
     func set(sorting: SortingType) {
         self.sorting = sorting
         updateList()
     }
     
+    func getFilters() -> [FilterType]? {
+        return self.filters
+    }
+    
     func set(filters: [FilterType]) {
         self.filters = filters
         updateList()
+    }
+    
+    func userTappedSortingButton() {
+        delegate?.mainViewSelectSorting(with: getSorting(), { [weak self] (type) in
+            self?.set(sorting: type)
+        })
+    }
+    
+    func userTappedFilterButton() {
+        delegate?.mainViewSelectFilters(with: getFilters(), { [weak self] (types) in
+            self?.set(filters: types)
+        })
+    }
+    
+    func userSelected(place: AbstractPlace) {
+        delegate?.mainViewSelected(place)
+    }
+    
+    func set(delegate: AbstractMainViewDelegate?) {
+        self.delegate = delegate
     }
     
     private func updateDistances() {

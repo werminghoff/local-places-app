@@ -13,7 +13,6 @@ class MainViewController: UIViewController {
     weak var presenter: AbstractMainPresenter?
     
     private let refreshControl = UIRefreshControl()
-    private weak var delegate: AbstractMainViewDelegate?
     private let tableView = UITableView.autoLayout()
     private var places: [AbstractPlace] = []
     
@@ -37,8 +36,8 @@ class MainViewController: UIViewController {
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshNearbyPlaces), for: .valueChanged)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem.filter(target: self, action: #selector(showFilterOptions))
-        navigationItem.leftBarButtonItem = UIBarButtonItem.sorting(target: self, action: #selector(showSortingOptions))
+        navigationItem.rightBarButtonItem = UIBarButtonItem.filter(target: self, action: #selector(userTappedFilterButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem.sorting(target: self, action: #selector(userTappedSortingButton))
         
         title = "Local Places"
     }
@@ -53,22 +52,16 @@ class MainViewController: UIViewController {
     }
     
     @objc private func refreshNearbyPlaces() {
-        presenter?.refreshPlacesList()
+        pullToRefresh()
     }
     
-    @objc private func showSortingOptions() {
-        delegate?.mainViewSelectSorting({ [weak self] (type) in
-            self?.presenter?.set(sorting: type)
-        })
+    @objc private func userTappedSortingButton() {
+        presenter?.userTappedSortingButton()
     }
     
-    @objc private func showFilterOptions() {
-        delegate?.mainViewSelectFilters({ [weak self] (types) in
-            self?.presenter?.set(filters: types)
-        })
+    @objc private func userTappedFilterButton() {
+        presenter?.userTappedFilterButton()
     }
-    
-    
     
 }
 
@@ -90,6 +83,10 @@ extension MainViewController: AbstractMainView {
         tableView.reloadData()
     }
     
+    func pullToRefresh() {
+        presenter?.refreshPlacesList()
+    }
+    
     func showLoadingIndicator() {
         // FIXME: spinner doesn't animate if UIViewController doesn't have a UIWindow yet, on iOS < 13.0
         self.refreshControl.beginRefreshing()
@@ -98,10 +95,7 @@ extension MainViewController: AbstractMainView {
     func hideLoadingIndicator() {
         refreshControl.endRefreshing()
     }
- 
-    func set(delegate: AbstractMainViewDelegate?) {
-        self.delegate = delegate
-    }
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -110,7 +104,7 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let place = places[indexPath.row]
-        delegate?.mainViewSelected(place)
+        presenter?.userSelected(place: place)
     }
     
 }

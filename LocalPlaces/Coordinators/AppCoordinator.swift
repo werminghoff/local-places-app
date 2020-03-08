@@ -18,7 +18,7 @@ class AppCoordinator {
     @Injected private var detailPresenter: AbstractDetailPresenter
     
     init() {
-        mainPresenter.view.set(delegate: self)
+        mainPresenter.set(delegate: self)
     }
     
 }
@@ -31,21 +31,22 @@ extension AppCoordinator: AbstractMainViewDelegate {
         rootViewController.show(detailPresenter.view as! UIViewController, sender: nil)
     }
     
-    func mainViewSelectFilters(_ callback: @escaping (([FilterType])-> Void)) {
+    func mainViewSelectFilters(with currentFilters: [FilterType]?, _ callback: @escaping (([FilterType])-> Void)) {
         filterTypePicker.callback = { [weak self] (types) in
             callback(types)
             self?.rootViewController.dismiss(animated: true, completion: nil)
         }
+        filterTypePicker.selectedValues = Set<FilterType>(currentFilters ?? [])
         let navController = UINavigationController(rootViewController: filterTypePicker as! UIViewController)
         rootViewController.present(navController, animated: true, completion: nil)
     }
     
-    func mainViewSelectSorting(_ callback: @escaping ((SortingType)-> Void)) {
+    func mainViewSelectSorting(with currentSorting: SortingType?, _ callback: @escaping ((SortingType)-> Void)) {
         sortingTypePicker.callback = { [weak self] (type) in
             callback(type)
             self?.rootViewController.dismiss(animated: true, completion: nil)
         }
-        sortingTypePicker.selectedValue = nil
+        sortingTypePicker.selectedValue = currentSorting
         
         let navController = UINavigationController(rootViewController: sortingTypePicker as! UIViewController)
         rootViewController.present(navController, animated: true, completion: nil)

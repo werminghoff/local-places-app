@@ -41,7 +41,11 @@ class BaseEnumPickerViewController<EnumType: SelectableEnumerator>: UITableViewC
 class SingleEnumPickerViewController<EnumType: SelectableEnumerator>: BaseEnumPickerViewController<EnumType> {
     
     var callback: ((EnumType) -> Void)?
-    var selectedValue: EnumType?
+    var selectedValue: EnumType? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         callback?(options[indexPath.row])
@@ -64,7 +68,11 @@ class SingleEnumPickerViewController<EnumType: SelectableEnumerator>: BaseEnumPi
 class MultipleEnumPickerViewController<EnumType: SelectableEnumerator>: BaseEnumPickerViewController<EnumType> {
     
     var callback: (([EnumType]) -> Void)?
-    var selectedValues = Set<EnumType>()
+    var selectedValues = Set<EnumType>() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
