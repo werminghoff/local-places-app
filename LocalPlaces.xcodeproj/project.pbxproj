@@ -3,13 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1540A69E241449E9002AE1AD /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A69D241449E9002AE1AD /* UIView+AutoLayout.swift */; };
+		1540A6A024144BF9002AE1AD /* MockedPlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A69F24144BF9002AE1AD /* MockedPlacesService.swift */; };
+		1540A6A424145694002AE1AD /* MockedLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6A324145694002AE1AD /* MockedLocationService.swift */; };
+		1540A6A624148D25002AE1AD /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6A524148D25002AE1AD /* Coordinate.swift */; };
+		1540A6A8241494C8002AE1AD /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6A7241494C8002AE1AD /* PlaceTableViewCell.swift */; };
+		1540A6AA241494F6002AE1AD /* UITableView+AutoIdentifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6A9241494F6002AE1AD /* UITableView+AutoIdentifyCell.swift */; };
+		1540A6AC24149548002AE1AD /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6AB24149548002AE1AD /* UITableViewCellExtension.swift */; };
+		1540A6AE24149CC4002AE1AD /* UIColor+StandardColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6AD24149CC4002AE1AD /* UIColor+StandardColors.swift */; };
+		1540A6B02414A427002AE1AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1540A6AF2414A427002AE1AD /* LaunchScreen.storyboard */; };
+		1569ABC4241424E000E5786E /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 1569ABC3241424E000E5786E /* Resolver */; };
+		1569ABC6241426A700E5786E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABC5241426A700E5786E /* MainViewController.swift */; };
+		1569ABD424142A0400E5786E /* AbstractLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABD324142A0400E5786E /* AbstractLocationService.swift */; };
+		1569ABD624142A1300E5786E /* AbstractPlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABD524142A1300E5786E /* AbstractPlacesService.swift */; };
+		1569ABD924142AAA00E5786E /* GooglePlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABD824142AAA00E5786E /* GooglePlaceModel.swift */; };
+		1569ABE32414385B00E5786E /* AbstractPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABE22414385B00E5786E /* AbstractPlace.swift */; };
+		1569ABE624143A5B00E5786E /* Resolver+Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABE524143A5B00E5786E /* Resolver+Registering.swift */; };
+		1569ABEA24143D4200E5786E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABE924143D4200E5786E /* AppCoordinator.swift */; };
+		1569ABED24143FCA00E5786E /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABEC24143FCA00E5786E /* Injected.swift */; };
+		1569ABF02414401E00E5786E /* MainViewContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABEF2414401E00E5786E /* MainViewContract.swift */; };
+		1569ABF22414402600E5786E /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569ABF12414402600E5786E /* MainPresenter.swift */; };
 		15B43AF324141658002E5EE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B43AF224141658002E5EE3 /* AppDelegate.swift */; };
 		15B43AFC2414165B002E5EE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15B43AFB2414165B002E5EE3 /* Assets.xcassets */; };
-		15B43AFF2414165B002E5EE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15B43AFD2414165B002E5EE3 /* LaunchScreen.storyboard */; };
 		15B43B0A2414165B002E5EE3 /* LocalPlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B43B092414165B002E5EE3 /* LocalPlacesTests.swift */; };
 		15B43B152414165B002E5EE3 /* LocalPlacesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B43B142414165B002E5EE3 /* LocalPlacesUITests.swift */; };
 /* End PBXBuildFile section */
@@ -32,10 +51,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1540A69D241449E9002AE1AD /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		1540A69F24144BF9002AE1AD /* MockedPlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedPlacesService.swift; sourceTree = "<group>"; };
+		1540A6A324145694002AE1AD /* MockedLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedLocationService.swift; sourceTree = "<group>"; };
+		1540A6A524148D25002AE1AD /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		1540A6A7241494C8002AE1AD /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
+		1540A6A9241494F6002AE1AD /* UITableView+AutoIdentifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+AutoIdentifyCell.swift"; sourceTree = "<group>"; };
+		1540A6AB24149548002AE1AD /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
+		1540A6AD24149CC4002AE1AD /* UIColor+StandardColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+StandardColors.swift"; sourceTree = "<group>"; };
+		1540A6AF2414A427002AE1AD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1569ABC5241426A700E5786E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		1569ABD324142A0400E5786E /* AbstractLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractLocationService.swift; sourceTree = "<group>"; };
+		1569ABD524142A1300E5786E /* AbstractPlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractPlacesService.swift; sourceTree = "<group>"; };
+		1569ABD824142AAA00E5786E /* GooglePlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlaceModel.swift; sourceTree = "<group>"; };
+		1569ABE22414385B00E5786E /* AbstractPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractPlace.swift; sourceTree = "<group>"; };
+		1569ABE524143A5B00E5786E /* Resolver+Registering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resolver+Registering.swift"; sourceTree = "<group>"; };
+		1569ABE924143D4200E5786E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		1569ABEC24143FCA00E5786E /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
+		1569ABEF2414401E00E5786E /* MainViewContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewContract.swift; sourceTree = "<group>"; };
+		1569ABF12414402600E5786E /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		15B43AEF24141658002E5EE3 /* LocalPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15B43AF224141658002E5EE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15B43AFB2414165B002E5EE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		15B43AFE2414165B002E5EE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15B43B002414165B002E5EE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15B43B052414165B002E5EE3 /* LocalPlacesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalPlacesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15B43B092414165B002E5EE3 /* LocalPlacesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPlacesTests.swift; sourceTree = "<group>"; };
@@ -50,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1569ABC4241424E000E5786E /* Resolver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +108,96 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1540A6A1241455DF002AE1AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1540A6A7241494C8002AE1AD /* PlaceTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1540A6A224145679002AE1AD /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				1540A69F24144BF9002AE1AD /* MockedPlacesService.swift */,
+				1540A6A324145694002AE1AD /* MockedLocationService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		1569ABC92414277A00E5786E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1569ABD324142A0400E5786E /* AbstractLocationService.swift */,
+				1569ABD524142A1300E5786E /* AbstractPlacesService.swift */,
+				1569ABE22414385B00E5786E /* AbstractPlace.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1569ABCA2414277F00E5786E /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				1569ABE924143D4200E5786E /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		1569ABCD241427AB00E5786E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				15B43AFB2414165B002E5EE3 /* Assets.xcassets */,
+				1540A6AF2414A427002AE1AD /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1569ABCE241427BE00E5786E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1569ABD724142AA300E5786E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1569ABD824142AAA00E5786E /* GooglePlaceModel.swift */,
+				1540A6A524148D25002AE1AD /* Coordinate.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1569ABE424143A4C00E5786E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1569ABE524143A5B00E5786E /* Resolver+Registering.swift */,
+				1540A69D241449E9002AE1AD /* UIView+AutoLayout.swift */,
+				1540A6A9241494F6002AE1AD /* UITableView+AutoIdentifyCell.swift */,
+				1540A6AB24149548002AE1AD /* UITableViewCellExtension.swift */,
+				1540A6AD24149CC4002AE1AD /* UIColor+StandardColors.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1569ABEB24143F1B00E5786E /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				1569ABEC24143FCA00E5786E /* Injected.swift */,
+			);
+			path = Annotations;
+			sourceTree = "<group>";
+		};
+		1569ABEE24143FF300E5786E /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				1569ABEF2414401E00E5786E /* MainViewContract.swift */,
+				1569ABC5241426A700E5786E /* MainViewController.swift */,
+				1569ABF12414402600E5786E /* MainPresenter.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		15B43AE624141658002E5EE3 = {
 			isa = PBXGroup;
 			children = (
@@ -93,9 +221,17 @@
 		15B43AF124141658002E5EE3 /* LocalPlaces */ = {
 			isa = PBXGroup;
 			children = (
+				1540A6A224145679002AE1AD /* Mocks */,
+				1540A6A1241455DF002AE1AD /* Views */,
+				1569ABEB24143F1B00E5786E /* Annotations */,
+				1569ABE424143A4C00E5786E /* Extensions */,
+				1569ABD724142AA300E5786E /* Models */,
+				1569ABCE241427BE00E5786E /* Services */,
+				1569ABCD241427AB00E5786E /* Resources */,
+				1569ABEE24143FF300E5786E /* Screens */,
+				1569ABCA2414277F00E5786E /* Coordinators */,
+				1569ABC92414277A00E5786E /* Protocols */,
 				15B43AF224141658002E5EE3 /* AppDelegate.swift */,
-				15B43AFB2414165B002E5EE3 /* Assets.xcassets */,
-				15B43AFD2414165B002E5EE3 /* LaunchScreen.storyboard */,
 				15B43B002414165B002E5EE3 /* Info.plist */,
 			);
 			path = LocalPlaces;
@@ -135,6 +271,9 @@
 			dependencies = (
 			);
 			name = LocalPlaces;
+			packageProductDependencies = (
+				1569ABC3241424E000E5786E /* Resolver */,
+			);
 			productName = LocalPlaces;
 			productReference = 15B43AEF24141658002E5EE3 /* LocalPlaces.app */;
 			productType = "com.apple.product-type.application";
@@ -207,6 +346,9 @@
 				Base,
 			);
 			mainGroup = 15B43AE624141658002E5EE3;
+			packageReferences = (
+				1569ABC2241424E000E5786E /* XCRemoteSwiftPackageReference "Resolver" */,
+			);
 			productRefGroup = 15B43AF024141658002E5EE3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -223,8 +365,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15B43AFF2414165B002E5EE3 /* LaunchScreen.storyboard in Resources */,
 				15B43AFC2414165B002E5EE3 /* Assets.xcassets in Resources */,
+				1540A6B02414A427002AE1AD /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +392,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				15B43AF324141658002E5EE3 /* AppDelegate.swift in Sources */,
+				1540A6A024144BF9002AE1AD /* MockedPlacesService.swift in Sources */,
+				1569ABF22414402600E5786E /* MainPresenter.swift in Sources */,
+				1540A6AC24149548002AE1AD /* UITableViewCellExtension.swift in Sources */,
+				1569ABC6241426A700E5786E /* MainViewController.swift in Sources */,
+				1569ABE32414385B00E5786E /* AbstractPlace.swift in Sources */,
+				1569ABE624143A5B00E5786E /* Resolver+Registering.swift in Sources */,
+				1569ABED24143FCA00E5786E /* Injected.swift in Sources */,
+				1540A6AE24149CC4002AE1AD /* UIColor+StandardColors.swift in Sources */,
+				1540A69E241449E9002AE1AD /* UIView+AutoLayout.swift in Sources */,
+				1569ABD924142AAA00E5786E /* GooglePlaceModel.swift in Sources */,
+				1540A6AA241494F6002AE1AD /* UITableView+AutoIdentifyCell.swift in Sources */,
+				1569ABEA24143D4200E5786E /* AppCoordinator.swift in Sources */,
+				1569ABD624142A1300E5786E /* AbstractPlacesService.swift in Sources */,
+				1540A6A8241494C8002AE1AD /* PlaceTableViewCell.swift in Sources */,
+				1540A6A424145694002AE1AD /* MockedLocationService.swift in Sources */,
+				1569ABD424142A0400E5786E /* AbstractLocationService.swift in Sources */,
+				1569ABF02414401E00E5786E /* MainViewContract.swift in Sources */,
+				1540A6A624148D25002AE1AD /* Coordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,17 +443,6 @@
 			targetProxy = 15B43B112414165B002E5EE3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		15B43AFD2414165B002E5EE3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				15B43AFE2414165B002E5EE3 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		15B43B172414165B002E5EE3 /* Debug */ = {
@@ -572,6 +721,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1569ABC2241424E000E5786E /* XCRemoteSwiftPackageReference "Resolver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Resolver.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1569ABC3241424E000E5786E /* Resolver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1569ABC2241424E000E5786E /* XCRemoteSwiftPackageReference "Resolver" */;
+			productName = Resolver;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 15B43AE724141658002E5EE3 /* Project object */;
 }

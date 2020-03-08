@@ -7,22 +7,19 @@
 //
 
 import UIKit
+import Resolver
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
+    let appCoordinator = AppCoordinator()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
         window = UIWindow()
+        window?.rootViewController = appCoordinator.rootViewController
         window?.makeKeyAndVisible()
-        
-        let vc = UIViewController()
-        vc.loadViewIfNeeded()
-        vc.view.backgroundColor = .red
-        window?.rootViewController = vc
         
         return true
     }
