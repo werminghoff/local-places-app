@@ -38,9 +38,9 @@ protocol AbstractPlace {
     var rating: Double? { get }
     
     /**
-    This place's photos URLs
+    This place's photo identifier
      */
-    var photoUrls: [URL] { get }
+    var photoIdentifier: String? { get }
     
     /**
      This place's distance to the current location.

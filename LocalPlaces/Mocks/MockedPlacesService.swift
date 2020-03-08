@@ -17,7 +17,7 @@ class MockedPlacesService: AbstractPlacesService {
         var coordinate: Coordinate
         var isOpenNow: Bool?
         var rating: Double?
-        var photoUrls: [URL]
+        var photoIdentifier: String?
         var distance: Double
         var formattedDistance: String
     }
@@ -34,7 +34,7 @@ class MockedPlacesService: AbstractPlacesService {
                          coordinate: Coordinate(latitude: -30.024834, longitude: -51.183043),
                          isOpenNow: nil,
                          rating: nil,
-                         photoUrls: [],
+                         photoIdentifier: nil,
                          distance: 0.0,
                          formattedDistance: ""),
         MockedPlaceModel(id: "place2",
@@ -42,7 +42,7 @@ class MockedPlacesService: AbstractPlacesService {
                          coordinate: Coordinate(latitude: -30.024779, longitude: -51.182953),
                          isOpenNow: true,
                          rating: 4.1,
-                         photoUrls: [],
+                         photoIdentifier: nil,
                          distance: 0.0,
                          formattedDistance: ""),
         MockedPlaceModel(id: "place3",
@@ -50,9 +50,7 @@ class MockedPlacesService: AbstractPlacesService {
                          coordinate: Coordinate(latitude: -30.023460, longitude: -51.183779),
                          isOpenNow: false,
                          rating: 4.8,
-                         photoUrls: [
-                            URL(string: "https://media-cdn.tripadvisor.com/media/photo-m/1280/16/ea/16/6f/french-23-musujacy-z.jpg")!
-            ],
+                         photoIdentifier: "identifier",
                          distance: 0.0,
                          formattedDistance: ""),
         MockedPlaceModel(id: "place4",
@@ -60,7 +58,7 @@ class MockedPlacesService: AbstractPlacesService {
                          coordinate: Coordinate(latitude: -30.024679, longitude: -51.182153),
                          isOpenNow: true,
                          rating: 2.2,
-                         photoUrls: [],
+                         photoIdentifier: nil,
                          distance: 0.0,
                          formattedDistance: ""),
     ]
@@ -100,7 +98,7 @@ class MockedPlacesService: AbstractPlacesService {
     
     func fetchPhoto(for place: AbstractPlace, callback: FetchPhotoCallback?) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            if place.photoUrls.first != nil {
+            if place.photoIdentifier != nil {
                 callback?(#imageLiteral(resourceName: "mock-bar-photo"), nil)
             } else {
                 callback?(nil, nil)

@@ -192,7 +192,7 @@ class DetailViewController: UIViewController, AbstractDetailView {
         alertController.addAction(UIAlertAction(title: "Ok",
                                                 style: .default,
                                                 handler: nil))
-        show(alertController, sender: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
 
 }

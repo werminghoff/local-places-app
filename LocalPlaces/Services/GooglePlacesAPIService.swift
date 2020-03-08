@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 class GooglePlacesAPIService: NSObject, AbstractPlacesService {
     
@@ -22,7 +23,7 @@ class GooglePlacesAPIService: NSObject, AbstractPlacesService {
         var hasError: Bool = false
         
         for type in types {
-            // Add URL parameters
+            // Parameters
             let urlParams = [
                 "location": "\(coordinate.latitude),\(coordinate.longitude)",
                 "radius": "500",
@@ -30,7 +31,7 @@ class GooglePlacesAPIService: NSObject, AbstractPlacesService {
                 "key": apiKey,
             ]
             
-            // Fetch Request
+            // Fetch
             group.enter()
             AF.request("https://maps.googleapis.com/maps/api/place/nearbysearch/json",
                        method: .get,
@@ -68,6 +69,33 @@ class GooglePlacesAPIService: NSObject, AbstractPlacesService {
     }
     
     func fetchPhoto(for place: AbstractPlace, callback: FetchPhotoCallback?) {
+        if let reference = place.photoIdentifier {
+            
+            // Parameters
+            let urlParams = [
+                "photoreference": reference,
+                "maxheight": "400",
+                "key": apiKey,
+            ]
+            
+            // Fetch
+            AF.request("https://maps.googleapis.com/maps/api/place/photo",
+                       method: .get,
+                       parameters: urlParams)
+                .validate(statusCode: 200..<300)
+                .responseData { (response) in
+                    let responseData = try? response.result.get()
+                    if let responseData = responseData,
+                        let image = UIImage(data: responseData) {
+                        callback?(image, nil)
+                    } else {
+                        callback?(nil, "Failed to fetch place's image")
+                    }
+            }
+            
+        } else {
+            callback?(nil, nil) // don't consider it an error, we just don't have an image for it
+        }
         
     }
     

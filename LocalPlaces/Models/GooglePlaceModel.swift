@@ -112,9 +112,9 @@ struct GooglePlaceModel {
 
 //// MARK: - AbstractPlace
 extension GooglePlaceModel.Place: AbstractPlace {
-    
+
     var coordinate: Coordinate { Coordinate(latitude: self.geometry.location.latitude, longitude: self.geometry.location.longitude) }
     var isOpenNow: Bool? { self.openingHours?.openNow }
-    var photoUrls: [URL] { [] } // TODO: implement
-    
+    var photoIdentifier: String? { self.photos?.compactMap({ $0.reference }).first }
+
 }
