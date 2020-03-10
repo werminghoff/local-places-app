@@ -45,17 +45,49 @@ class AppCoordinatorTests: XCTestCase {
     
     func testSortingFlow() {
         
+        let sortingTypePicker = MockedSortingTypePicker()
+        Resolver.register { sortingTypePicker as AbstractSortingTypePicker }
+        
         let placesService = MockedSuccessfulPlacesService()
-        Resolver.shared.reset()
-        Resolver.registerAllServices()
-        Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
         Resolver.register { placesService as AbstractPlacesService }
         
-        let appCoordinator = AppCoordinator()
-        appCoordinator.mainViewSelected(placesService.places.first!)
+        Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
+        Resolver.register { MockedAppCoordinator() as AbstractAppCoordinator }
+        
+        let appCoordinator: AbstractAppCoordinator = Resolver.resolve()
+        let mockedCoordinator = appCoordinator as! MockedAppCoordinator
+        
+        XCTAssertFalse(mockedCoordinator.mainViewSelectSortingCalled)
+        XCTAssertFalse(mockedCoordinator.mainViewSelectSortingCallbackCalled)
+        appCoordinator.mainPresenter.userTappedSortingButton()
+        XCTAssertTrue(mockedCoordinator.mainViewSelectSortingCalled)
+        XCTAssertFalse(mockedCoordinator.mainViewSelectSortingCallbackCalled)
+        sortingTypePicker.select(.closed)
+        XCTAssertTrue(mockedCoordinator.mainViewSelectSortingCalled)
+        XCTAssertTrue(mockedCoordinator.mainViewSelectSortingCallbackCalled)
     }
     
     func testFilteringFlow() {
+        let filterTypePicker = MockedFilterTypePicker()
+        Resolver.register { filterTypePicker as AbstractFilterTypePicker }
+        
+        let placesService = MockedSuccessfulPlacesService()
+        Resolver.register { placesService as AbstractPlacesService }
+        
+        Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
+        Resolver.register { MockedAppCoordinator() as AbstractAppCoordinator }
+        
+        let appCoordinator: AbstractAppCoordinator = Resolver.resolve()
+        let mockedCoordinator = appCoordinator as! MockedAppCoordinator
+        
+        XCTAssertFalse(mockedCoordinator.mainViewSelectFiltersCalled)
+        XCTAssertFalse(mockedCoordinator.mainViewSelectFiltersCallbackCalled)
+        appCoordinator.mainPresenter.userTappedFilterButton()
+        XCTAssertTrue(mockedCoordinator.mainViewSelectFiltersCalled)
+        XCTAssertFalse(mockedCoordinator.mainViewSelectFiltersCallbackCalled)
+        filterTypePicker.select([.closed])
+        XCTAssertTrue(mockedCoordinator.mainViewSelectFiltersCalled)
+        XCTAssertTrue(mockedCoordinator.mainViewSelectFiltersCallbackCalled)
     }
     
 }

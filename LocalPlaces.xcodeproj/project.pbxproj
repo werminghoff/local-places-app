@@ -64,6 +64,9 @@
 		158D4BEA241580DD000CB13D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 158D4BE9241580DD000CB13D /* Alamofire */; };
 		158D4BEC241584E8000CB13D /* CoreLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D4BEB241584E8000CB13D /* CoreLocationService.swift */; };
 		158D4BEE24158A59000CB13D /* GooglePlacesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D4BED24158A59000CB13D /* GooglePlacesAPIService.swift */; };
+		15A7672D2417729000789CF0 /* MockedAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A7672C2417729000789CF0 /* MockedAppCoordinator.swift */; };
+		15A7672F2417755900789CF0 /* ReviewTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A7672E2417755900789CF0 /* ReviewTableViewCellTests.swift */; };
+		15A767312417763700789CF0 /* PlaceTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A767302417763700789CF0 /* PlaceTableViewCellTests.swift */; };
 		15B43AF324141658002E5EE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B43AF224141658002E5EE3 /* AppDelegate.swift */; };
 		15B43AFC2414165B002E5EE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15B43AFB2414165B002E5EE3 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -134,6 +137,9 @@
 		1569ABF12414402600E5786E /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		158D4BEB241584E8000CB13D /* CoreLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationService.swift; sourceTree = "<group>"; };
 		158D4BED24158A59000CB13D /* GooglePlacesAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesAPIService.swift; sourceTree = "<group>"; };
+		15A7672C2417729000789CF0 /* MockedAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedAppCoordinator.swift; sourceTree = "<group>"; };
+		15A7672E2417755900789CF0 /* ReviewTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCellTests.swift; sourceTree = "<group>"; };
+		15A767302417763700789CF0 /* PlaceTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCellTests.swift; sourceTree = "<group>"; };
 		15B43AEF24141658002E5EE3 /* LocalPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15B43AF224141658002E5EE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15B43AFB2414165B002E5EE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -165,6 +171,7 @@
 		1519D1D624159B6B0076D742 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				15A7672B2417727100789CF0 /* Coordinators */,
 				1535D18B24176609001F63C9 /* Screens */,
 				1535D18A241765F8001F63C9 /* Services */,
 			);
@@ -358,6 +365,14 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
+		15A7672B2417727100789CF0 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				15A7672C2417729000789CF0 /* MockedAppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		15B43AE624141658002E5EE3 = {
 			isa = PBXGroup;
 			children = (
@@ -399,16 +414,18 @@
 			isa = PBXGroup;
 			children = (
 				1519D1D624159B6B0076D742 /* Mocks */,
-				15B43B0B2414165B002E5EE3 /* Info.plist */,
-				1519D1D4241599700076D742 /* MainPresenterTests.swift */,
-				1535D17C241756D6001F63C9 /* UIBarButtonItemExtensionsTests.swift */,
-				1535D17E24175CD0001F63C9 /* FilterTypesTests.swift */,
-				1535D18024175D5A001F63C9 /* SortingTypesTests.swift */,
-				1535D18224175DD8001F63C9 /* UIViewExtensionsTests.swift */,
-				1535D18424175E85001F63C9 /* UITableViewExtensionsTests.swift */,
-				1535D186241760CA001F63C9 /* UIColorExtensionTests.swift */,
 				1535D19424176854001F63C9 /* AppCoordinatorTests.swift */,
 				1535D18824176204001F63C9 /* DetailPresenterTests.swift */,
+				1535D17E24175CD0001F63C9 /* FilterTypesTests.swift */,
+				15B43B0B2414165B002E5EE3 /* Info.plist */,
+				1519D1D4241599700076D742 /* MainPresenterTests.swift */,
+				15A767302417763700789CF0 /* PlaceTableViewCellTests.swift */,
+				15A7672E2417755900789CF0 /* ReviewTableViewCellTests.swift */,
+				1535D18024175D5A001F63C9 /* SortingTypesTests.swift */,
+				1535D17C241756D6001F63C9 /* UIBarButtonItemExtensionsTests.swift */,
+				1535D186241760CA001F63C9 /* UIColorExtensionTests.swift */,
+				1535D18424175E85001F63C9 /* UITableViewExtensionsTests.swift */,
+				1535D18224175DD8001F63C9 /* UIViewExtensionsTests.swift */,
 			);
 			path = LocalPlacesTests;
 			sourceTree = "<group>";
@@ -567,9 +584,11 @@
 				1535D17D241756D6001F63C9 /* UIBarButtonItemExtensionsTests.swift in Sources */,
 				1519D1D5241599700076D742 /* MainPresenterTests.swift in Sources */,
 				1535D18F24176635001F63C9 /* MockedMainView.swift in Sources */,
+				15A767312417763700789CF0 /* PlaceTableViewCellTests.swift in Sources */,
 				1535D18524175E85001F63C9 /* UITableViewExtensionsTests.swift in Sources */,
 				1535D1912417665E001F63C9 /* MockedDetailView.swift in Sources */,
 				1535D18D2417661F001F63C9 /* MockedMainPresenter.swift in Sources */,
+				15A7672F2417755900789CF0 /* ReviewTableViewCellTests.swift in Sources */,
 				1519D1DC24159BEF0076D742 /* MockedSuccessfulPlacesService.swift in Sources */,
 				1519D1DE24159C290076D742 /* MockedFailablePlacesService.swift in Sources */,
 				1519D1E02415A1440076D742 /* MockedSortingTypePicker.swift in Sources */,
@@ -577,6 +596,7 @@
 				1535D19324176672001F63C9 /* MockedDetailPresenter.swift in Sources */,
 				1519D1E22415A6880076D742 /* MockedFilterTypePicker.swift in Sources */,
 				1519D1DA24159BB30076D742 /* MockedFailableLocationService.swift in Sources */,
+				15A7672D2417729000789CF0 /* MockedAppCoordinator.swift in Sources */,
 				1535D18924176204001F63C9 /* DetailPresenterTests.swift in Sources */,
 				1535D19524176854001F63C9 /* AppCoordinatorTests.swift in Sources */,
 				1535D187241760CA001F63C9 /* UIColorExtensionTests.swift in Sources */,

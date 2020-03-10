@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol AbstractAppCoordinator: class {
+protocol AbstractAppCoordinator: AbstractMainViewDelegate {
     var rootViewController: UIViewController { get }
     var mainPresenter: AbstractMainPresenter { get }
     var sortingTypePicker: AbstractSortingTypePicker { get }
@@ -28,11 +28,6 @@ class AppCoordinator: AbstractAppCoordinator {
     init() {
         mainPresenter.set(delegate: self)
     }
-    
-}
-
-// MARK: - AbstractMainViewDelegate
-extension AppCoordinator: AbstractMainViewDelegate {
     
     func mainViewSelected(_ place: AbstractPlace) {
         detailPresenter.set(place: place)
@@ -59,4 +54,5 @@ extension AppCoordinator: AbstractMainViewDelegate {
         let navController = UINavigationController(rootViewController: sortingTypePicker as! UIViewController)
         rootViewController.present(navController, animated: true, completion: nil)
     }
+    
 }

@@ -9,10 +9,7 @@
 import Foundation
 @testable import LocalPlaces
 
-class MockedSortingTypePicker: AbstractSortingTypePicker {
-    
-    var callback: ((SortingType) -> Void)?
-    var selectedValue: SortingType?
+class MockedSortingTypePicker: SortingTypePickerViewController {
     
     func select(_ value: SortingType) {
         callback?(value)

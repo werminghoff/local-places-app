@@ -9,10 +9,7 @@
 import Foundation
 @testable import LocalPlaces
 
-class MockedFilterTypePicker: AbstractFilterTypePicker {
-    
-    var callback: (([FilterType]) -> Void)?
-    var selectedValues = Set<FilterType>()
+class MockedFilterTypePicker: FilterTypePickerViewController {
     
     func select(_ values: [FilterType]) {
         callback?(values)
