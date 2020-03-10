@@ -21,6 +21,14 @@ class MainPresenterTests: XCTestCase {
     override func setUp() {
         super.setUp()
         Resolver.registerAllServices()
+        
+        // Defaults for testing
+        Resolver.register { MockedFilterTypePicker() as AbstractFilterTypePicker }
+        Resolver.register { MockedSortingTypePicker() as AbstractSortingTypePicker }
+        Resolver.register { MockedMainView() as AbstractMainView }
+        Resolver.register { MockedMainPresenter() as AbstractMainPresenter }
+        Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
+        Resolver.register { MockedSuccessfulPlacesService() as AbstractPlacesService }
     }
     
     override func tearDown() {
@@ -38,9 +46,7 @@ class MainPresenterTests: XCTestCase {
      - Then: Main view receives the error message to show
      */
     func testViewShowsLocationError() {
-        Resolver.register { MockedMainView() as AbstractMainView }
         Resolver.register { MockedFailableLocationService(fetchError: "Failed to get user location") as AbstractLocationService }
-        Resolver.register { MockedSuccessfulPlacesService() as AbstractPlacesService }
         
         let presenter: AbstractMainPresenter = Resolver.resolve()
         
@@ -56,8 +62,6 @@ class MainPresenterTests: XCTestCase {
     - Then: Main view receives the error message to show
     */
     func testViewShowsPlacesListError() {
-        Resolver.register { MockedMainView() as AbstractMainView }
-        Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
         Resolver.register { MockedFailablePlacesService(fetchNearError: "Failed to fetch places", fetchNearPhoto: nil, fetchNearReviews: nil) as AbstractPlacesService }
         
         let presenter: AbstractMainPresenter = Resolver.resolve()
@@ -73,9 +77,6 @@ class MainPresenterTests: XCTestCase {
     - Then: Main view receives the correct places to display
     */
     func testViewShowsCorrectNumberOfPlaces() {
-        Resolver.register { MockedMainView() as AbstractMainView }
-        Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
-        Resolver.register { MockedSuccessfulPlacesService() as AbstractPlacesService }
         
         let presenter: AbstractMainPresenter = Resolver.resolve()
         
@@ -93,9 +94,6 @@ class MainPresenterTests: XCTestCase {
     func testCorrectSortingIsApplied() {
         self.sortingTypePicker = MockedSortingTypePicker()
         Resolver.register { self.sortingTypePicker! as AbstractSortingTypePicker}
-        Resolver.register { MockedMainView() as AbstractMainView }
-        Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
-        Resolver.register { MockedSuccessfulPlacesService() as AbstractPlacesService }
         
         let presenter: AbstractMainPresenter = Resolver.resolve()
         let view = presenter.view as! MockedMainView
@@ -178,10 +176,6 @@ class MainPresenterTests: XCTestCase {
         self.sortingTypePicker = MockedSortingTypePicker()
         Resolver.register { self.filterTypePicker! as AbstractFilterTypePicker }
         Resolver.register { self.sortingTypePicker! as AbstractSortingTypePicker }
-        Resolver.register { MockedMainView() as AbstractMainView }
-        Resolver.register { MockedMainPresenter() as AbstractMainPresenter }
-        Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
-        Resolver.register { MockedSuccessfulPlacesService() as AbstractPlacesService }
 
         let presenter: AbstractMainPresenter = Resolver.resolve()
         let view = presenter.view as! MockedMainView
@@ -229,8 +223,6 @@ class MainPresenterTests: XCTestCase {
         let view = MockedMainView()
 
         Resolver.register { view as AbstractMainView }
-        Resolver.register { MockedMainPresenter() as AbstractMainPresenter }
-        Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
         Resolver.register { placesService as AbstractPlacesService }
         
         let presenter: AbstractMainPresenter = Resolver.resolve()
@@ -273,7 +265,6 @@ class MainPresenterTests: XCTestCase {
         let presenter = MockedMainPresenter()
         Resolver.register { view as AbstractMainView }
         Resolver.register { presenter as AbstractMainPresenter }
-        Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
         Resolver.register { placesService as AbstractPlacesService }
         
         let place = placesService.places.first! as AbstractPlace
