@@ -19,8 +19,8 @@ class DetailPresenter: AbstractDetailPresenter {
         placesService.fetchReviews(for: place) { [weak self] (reviews, error) in
             guard let self = self else { return }
             
+            self.view.hideReviewsLoadingIndicator()
             if let error = error {
-                self.view.hideReviewsLoadingIndicator()
                 self.view.show(errorMessage: error)
             } else {
                 self.view.show(reviews: reviews ?? [])
@@ -30,8 +30,8 @@ class DetailPresenter: AbstractDetailPresenter {
         view.showPhotoLoadingIndicator()
         placesService.fetchPhoto(for: place) { [weak self] (image, error) in
             guard let self = self else { return }
+            self.view.hidePhotoLoadingIndicator()
             if let error = error {
-                self.view.hidePhotoLoadingIndicator()
                 self.view.show(errorMessage: error)
             } else {
                 self.view.show(photo: image)

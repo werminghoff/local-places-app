@@ -16,6 +16,7 @@ class DetailViewController: UIViewController, AbstractDetailView {
     private var photoImageView = UIImageView.autoLayout()
     private var emptyStateLabel = UILabel.autoLayout()
     private var nameLabel = UILabel.autoLayout()
+    private var dividerView = UIView.autoLayout()
     private var ratingLabel = UILabel.autoLayout()
     private var openImageView = UIImageView.autoLayout()
     private var reviewsActivityIndicator = UIActivityIndicatorView.autoLayout()
@@ -33,6 +34,7 @@ class DetailViewController: UIViewController, AbstractDetailView {
     private func setupViews() {
         view.backgroundColor = .white
         
+        view.addSubview(dividerView)
         view.addSubview(photoImageView)
         view.addSubview(emptyStateLabel)
         view.addSubview(nameLabel)
@@ -53,6 +55,8 @@ class DetailViewController: UIViewController, AbstractDetailView {
         nameLabel.font = .preferredFont(forTextStyle: .body)
         nameLabel.textColor = .titleColor
         nameLabel.numberOfLines = 0
+        
+        dividerView.backgroundColor = .separatorColor
         
         photoNotAvailableLabel.font = .preferredFont(forTextStyle: .body)
         photoNotAvailableLabel.textColor = .subtitleColor
@@ -77,6 +81,7 @@ class DetailViewController: UIViewController, AbstractDetailView {
         let views = [
             "nameLabel": nameLabel,
             "ratingLabel": ratingLabel,
+            "dividerView": dividerView,
             "openImageView": openImageView,
             "photoImageView": photoImageView,
             "photoNotAvailableLabel": photoNotAvailableLabel,
@@ -85,14 +90,16 @@ class DetailViewController: UIViewController, AbstractDetailView {
             "tableView": tableView
         ]
         
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[photoImageView]-16-[nameLabel]-8-[ratingLabel]-8-[tableView]|", metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[photoImageView]-16-[nameLabel]-8-[ratingLabel]-8-[dividerView(0.3)][tableView]|", metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[nameLabel]-16-[openImageView]-16-|", metrics: nil, views: views))
         
         view.addConstraints([
             
             photoImageView.heightAnchor.constraint(equalToConstant: 200),
             photoImageView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            photoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            photoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            
+            dividerView.widthAnchor.constraint(equalTo: view.widthAnchor),
             
             ratingLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             ratingLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),

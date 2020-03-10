@@ -9,10 +9,12 @@
 import Resolver
 
 extension Resolver: ResolverRegistering {
+    
     public static func registerAllServices() {
         registerViews()
         registerPresenters()
         registerServices()
+        registerCoordinators()
     }
     
     private static func registerViews() {
@@ -28,10 +30,12 @@ extension Resolver: ResolverRegistering {
     }
     
     private static func registerServices() {
-        //register { MockedPlacesService() as AbstractPlacesService }
-        //register { MockedLocationService() as AbstractLocationService }
         register { GooglePlacesAPIService() as AbstractPlacesService }
-        register { CoreLocationService() as AbstractLocationService }
-        
+        register { CoreLocationService() as AbstractLocationService }   
     }
+    
+    private static func registerCoordinators() {
+        register { AppCoordinator() as AbstractAppCoordinator }
+    }
+    
 }

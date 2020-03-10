@@ -41,7 +41,7 @@ class GooglePlacesAPIService: NSObject, AbstractPlacesService {
                     
                     let responseObject = try? response.result.get()
                     
-                    if let responseObject = responseObject {
+                    if let responseObject = responseObject, responseObject.status == .ok {
                         results.append(contentsOf: responseObject.results)
                     } else {
                         hasError = true

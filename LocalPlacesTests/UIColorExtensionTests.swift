@@ -19,6 +19,9 @@ class UIColorExtensionTests: XCTestCase {
         color = .subtitleColor
         XCTAssertNotNil(color)
         
+        color = .separatorColor
+        XCTAssertNotNil(color)
+        
     }
     
 }

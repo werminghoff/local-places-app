@@ -9,13 +9,21 @@
 import Foundation
 import UIKit
 
-class AppCoordinator {
+protocol AbstractAppCoordinator: class {
+    var rootViewController: UIViewController { get }
+    var mainPresenter: AbstractMainPresenter { get }
+    var sortingTypePicker: AbstractSortingTypePicker { get }
+    var filterTypePicker: AbstractFilterTypePicker { get }
+    var detailPresenter: AbstractDetailPresenter { get }
+}
+
+class AppCoordinator: AbstractAppCoordinator {
     
     lazy private(set) var rootViewController: UIViewController = UINavigationController(rootViewController: self.mainPresenter.view as! UIViewController)
-    @Injected private var mainPresenter: AbstractMainPresenter
-    @Injected private var sortingTypePicker: AbstractSortingTypePicker
-    @Injected private var filterTypePicker: AbstractFilterTypePicker
-    @Injected private var detailPresenter: AbstractDetailPresenter
+    @Injected var mainPresenter: AbstractMainPresenter
+    @Injected var sortingTypePicker: AbstractSortingTypePicker
+    @Injected var filterTypePicker: AbstractFilterTypePicker
+    @Injected var detailPresenter: AbstractDetailPresenter
     
     init() {
         mainPresenter.set(delegate: self)

@@ -12,5 +12,6 @@ extension UIColor {
     
     static var titleColor: UIColor { UIColor(red: 0, green: 0, blue: 0, alpha: 1) }
     static var subtitleColor: UIColor { UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1) }
+    static var separatorColor: UIColor { UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1) }
     
 }

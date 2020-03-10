@@ -62,7 +62,7 @@ class MainPresenterTests: XCTestCase {
     - Then: Main view receives the error message to show
     */
     func testViewShowsPlacesListError() {
-        Resolver.register { MockedFailablePlacesService(fetchNearError: "Failed to fetch places", fetchNearPhoto: nil, fetchNearReviews: nil) as AbstractPlacesService }
+        Resolver.register { MockedFailablePlacesService(fetchNearError: "Failed to fetch places", fetchPhotoError: nil, fetchReviewsError: nil) as AbstractPlacesService }
         
         let presenter: AbstractMainPresenter = Resolver.resolve()
         
@@ -273,6 +273,7 @@ class MainPresenterTests: XCTestCase {
         
         XCTAssertEqual(selectedPlace?.id, place.id)
     }
+    
 }
 
 // MARK: - AbstractMainViewDelegate
@@ -294,59 +295,10 @@ extension MainPresenterTests: AbstractMainViewDelegate {
             callback(type)
         }
         self.sortingTypePicker?.selectedValue = currentSorting
-        
     }
 
 }
 
-fileprivate class MockedMainPresenter: MainPresenter {
-    
-    var refreshPlacesListCalled: Bool = false
-    override func refreshPlacesList() {
-        refreshPlacesListCalled = true
-        super.refreshPlacesList()
-    }
-    
-}
 
 
-fileprivate class MockedMainView: MainViewController {
-    
-    var places: [AbstractPlace]?
-    var errorMessage: String?
-    var showingLoadingIndicator: Bool?
-    var viewIsLoaded: Bool = false
-    var pulledToRefresh: Bool = false
-    
-    override func show(places: [AbstractPlace]) {
-        super.show(places: places)
-        self.places = places
-    }
-    
-    override func pullToRefresh() {
-        super.pullToRefresh()
-        pulledToRefresh = true
-    }
-    
-    override func show(errorMessage: String) {
-        super.show(errorMessage: errorMessage)
-        self.errorMessage = errorMessage
-    }
-    
-    override func showLoadingIndicator() {
-        super.showLoadingIndicator()
-        self.showingLoadingIndicator = true
-    }
-    
-    override func hideLoadingIndicator() {
-        super.hideLoadingIndicator()
-        self.showingLoadingIndicator = false
-    }
-    
-    override func loadViewIfNeeded() {
-        super.loadViewIfNeeded()
-        viewIsLoaded = true
-    }
-    
-    
-}
+

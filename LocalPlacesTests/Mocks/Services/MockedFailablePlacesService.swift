@@ -12,13 +12,13 @@ import Foundation
 class MockedFailablePlacesService: MockedSuccessfulPlacesService {
     
     var fetchNearError: String?
-    var fetchNearPhoto: String?
-    var fetchNearReviews: String?
+    var fetchPhotoError: String?
+    var fetchReviewsError: String?
     
-    internal init(fetchNearError: String?, fetchNearPhoto: String?, fetchNearReviews: String?) {
+    internal init(fetchNearError: String?, fetchPhotoError: String?, fetchReviewsError: String?) {
         self.fetchNearError = fetchNearError
-        self.fetchNearPhoto = fetchNearPhoto
-        self.fetchNearReviews = fetchNearReviews
+        self.fetchPhotoError = fetchPhotoError
+        self.fetchReviewsError = fetchReviewsError
     }
     
     override func fetchNear(coordinate: Coordinate, callback: FetchPlacesCallback?) {
@@ -30,16 +30,16 @@ class MockedFailablePlacesService: MockedSuccessfulPlacesService {
     }
     
     override func fetchPhoto(for place: AbstractPlace, callback: FetchPhotoCallback?) {
-        if let fetchNearPhoto = fetchNearPhoto {
-            callback?(nil, fetchNearPhoto)
+        if let fetchPhotoError = fetchPhotoError {
+            callback?(nil, fetchPhotoError)
         } else {
             super.fetchPhoto(for: place, callback: callback)
         }
     }
     
     override func fetchReviews(for place: AbstractPlace, callback: FetchReviewsCallback?) {
-        if let fetchNearReviews = fetchNearReviews {
-            callback?(nil, fetchNearReviews)
+        if let fetchReviewsError = fetchReviewsError {
+            callback?(nil, fetchReviewsError)
         } else {
             super.fetchReviews(for: place, callback: callback)
         }
