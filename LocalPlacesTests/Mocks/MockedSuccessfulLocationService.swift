@@ -12,7 +12,7 @@ import Foundation
 class MockedSuccessfulLocationService: AbstractLocationService {
     
     func fetch(_ callback: @escaping LocationUpdatedCallback) {
-        callback(Coordinate(latitude: 1.0, longitude: 1.0), nil)
+        callback(Coordinate(latitude: -30.021834, longitude: -51.183243), nil)
     }
     
 }

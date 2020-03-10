@@ -23,6 +23,20 @@ class MainScreenTests: XCTestCase {
         Resolver.registerAllServices()
     }
     
+    override func tearDown() {
+        super.tearDown()
+        selectedPlace = nil
+        selectedFilters = nil
+        selectedSorting = nil
+        sortingTypePicker = nil
+        filterTypePicker = nil
+    }
+    
+    /**
+     - Given: Main screen is loading, and something prevents the app to get the user's location
+     - When: Main screen tries to get the user's location
+     - Then: Main view receives the error message to show
+     */
     func testViewShowsLocationError() {
         Resolver.register { MockedMainView() as AbstractMainView }
         Resolver.register { MockedFailableLocationService(fetchError: "Failed to get user location") as AbstractLocationService }
@@ -36,6 +50,11 @@ class MainScreenTests: XCTestCase {
         
     }
     
+    /**
+    - Given: Main screen is loading, and something prevents the app to fetch nearby places
+    - When: Main screen tries to fetch nearby places
+    - Then: Main view receives the error message to show
+    */
     func testViewShowsPlacesListError() {
         Resolver.register { MockedMainView() as AbstractMainView }
         Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
@@ -48,6 +67,11 @@ class MainScreenTests: XCTestCase {
         XCTAssertEqual(view.errorMessage, "Failed to fetch places")
     }
     
+    /**
+    - Given: Main screen is loading, user location and nearby places are available
+    - When: Main screen finishes loading
+    - Then: Main view receives the correct places to display
+    */
     func testViewShowsCorrectNumberOfPlaces() {
         Resolver.register { MockedMainView() as AbstractMainView }
         Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
@@ -61,6 +85,11 @@ class MainScreenTests: XCTestCase {
         XCTAssertEqual(view.places?.count, 4)
     }
     
+    /**
+    - Given: Main screen is loaded
+    - When: User selects a sorting method
+    - Then: Main view receives the sorted list of places, with correct sorting
+    */
     func testCorrectSortingIsApplied() {
         self.sortingTypePicker = MockedSortingTypePicker()
         Resolver.register { self.sortingTypePicker! as AbstractSortingTypePicker}
@@ -69,48 +98,125 @@ class MainScreenTests: XCTestCase {
         Resolver.register { MockedSuccessfulPlacesService() as AbstractPlacesService }
         
         let presenter: AbstractMainPresenter = Resolver.resolve()
-        
+        let view = presenter.view as! MockedMainView
         presenter.set(delegate: self)
         
+        XCTAssertEqual(view.places?.count, 4)
+        
+        // Sort by Open now
         presenter.userTappedSortingButton()
         sortingTypePicker?.select(.open)
-        XCTAssertEqual(presenter.getSorting(), .open)
+        XCTAssertEqual(view.places![0].isOpenNow, true)
+        XCTAssertEqual(view.places![1].isOpenNow, true)
+        XCTAssertEqual(view.places![2].isOpenNow, nil)
+        XCTAssertEqual(view.places![3].isOpenNow, false)
         
+        // Sort by Closed now
         presenter.userTappedSortingButton()
         sortingTypePicker?.select(.closed)
-        XCTAssertEqual(presenter.getSorting(), .closed)
+        XCTAssertEqual(view.places![0].isOpenNow, false)
+        XCTAssertEqual(view.places![1].isOpenNow, nil)
+        XCTAssertEqual(view.places![2].isOpenNow, true)
+        XCTAssertEqual(view.places![3].isOpenNow, true)
         
+        // Sort by higher distance
         presenter.userTappedSortingButton()
         sortingTypePicker?.select(.distanceHigher)
-        XCTAssertEqual(presenter.getSorting(), .distanceHigher)
+        XCTAssertEqual(view.places![0].distance.rounded(), (333.117).rounded())
+        XCTAssertEqual(view.places![1].distance.rounded(), (332.442).rounded())
+        XCTAssertEqual(view.places![2].distance.rounded(), (327.657).rounded())
+        XCTAssertEqual(view.places![3].distance.rounded(), (187.515).rounded())
         
+        // Sort by lower distance
         presenter.userTappedSortingButton()
         sortingTypePicker?.select(.distanceLower)
-        XCTAssertEqual(presenter.getSorting(), .distanceLower)
+        XCTAssertEqual(view.places![0].distance.rounded(), (187.515).rounded())
+        XCTAssertEqual(view.places![1].distance.rounded(), (327.657).rounded())
+        XCTAssertEqual(view.places![2].distance.rounded(), (332.442).rounded())
+        XCTAssertEqual(view.places![3].distance.rounded(), (333.117).rounded())
         
+        // Sort by name ascending
+        presenter.userTappedSortingButton()
+        sortingTypePicker?.select(.nameAscending)
+        XCTAssertEqual(view.places![0].name, "Place 1")
+        XCTAssertEqual(view.places![1].name, "Place 2")
+        XCTAssertEqual(view.places![2].name, "Place 3")
+        XCTAssertEqual(view.places![3].name, "Place 4 with amazingly long name for whatever reason")
+        
+        // Sort by name descending
+        presenter.userTappedSortingButton()
+        sortingTypePicker?.select(.nameDescending)
+        XCTAssertEqual(view.places![0].name, "Place 4 with amazingly long name for whatever reason")
+        XCTAssertEqual(view.places![1].name, "Place 3")
+        XCTAssertEqual(view.places![2].name, "Place 2")
+        XCTAssertEqual(view.places![3].name, "Place 1")
+        
+        // Sort by higher rating
+        presenter.userTappedSortingButton()
+        sortingTypePicker?.select(.ratingHigher)
+        XCTAssertEqual(view.places![0].rating, 4.8)
+        XCTAssertEqual(view.places![1].rating, 4.1)
+        XCTAssertEqual(view.places![2].rating, 2.2)
+        XCTAssertEqual(view.places![3].rating, nil)
+        
+        // Sort by lower rating
+        presenter.userTappedSortingButton()
+        sortingTypePicker?.select(.ratingLower)
+        XCTAssertEqual(view.places![0].rating, 2.2)
+        XCTAssertEqual(view.places![1].rating, 4.1)
+        XCTAssertEqual(view.places![2].rating, 4.8)
+        XCTAssertEqual(view.places![3].rating, nil)
     }
     
+    /**
+    - Given: Main screen is loaded
+    - When: User selects a filter method
+    - Then: Main view receives the sorted list of places, with correct sorting
+    */
     func testCorrectFilterIsApplied() {
         self.filterTypePicker = MockedFilterTypePicker()
-        Resolver.register { self.filterTypePicker! as AbstractFilterTypePicker}
+        self.sortingTypePicker = MockedSortingTypePicker()
+        Resolver.register { self.filterTypePicker! as AbstractFilterTypePicker }
+        Resolver.register { self.sortingTypePicker! as AbstractSortingTypePicker }
         Resolver.register { MockedMainView() as AbstractMainView }
+        Resolver.register { MockedMainPresenter() as AbstractMainPresenter }
         Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
         Resolver.register { MockedSuccessfulPlacesService() as AbstractPlacesService }
-        
+
         let presenter: AbstractMainPresenter = Resolver.resolve()
-        
+        let view = presenter.view as! MockedMainView
         presenter.set(delegate: self)
-        presenter.userTappedFilterButton()
-        filterTypePicker?.select([.closed, .withRating])
-        XCTAssertEqual(presenter.getFilters(), [.closed, .withRating])
         
+        // Set the sorting method
+        presenter.userTappedSortingButton()
+        sortingTypePicker?.select(.nameAscending)
+        
+        // Filter by closed now
+        presenter.userTappedFilterButton()
+        filterTypePicker?.select([.closed])
+        XCTAssertEqual(view.places?.count, 1)
+        XCTAssertEqual(view.places?[0].name, "Place 3")
+        
+        // Filter by open now
         presenter.userTappedFilterButton()
         filterTypePicker?.select([.open])
-        XCTAssertEqual(presenter.getFilters(), [.open])
+        XCTAssertEqual(view.places?.count, 2)
+        XCTAssertEqual(view.places?[0].name, "Place 2")
+        XCTAssertEqual(view.places?[1].name, "Place 4 with amazingly long name for whatever reason")
         
+        // Filter by unknown rating
         presenter.userTappedFilterButton()
-        filterTypePicker?.select([])
-        XCTAssertEqual(presenter.getFilters(), [])
+        filterTypePicker?.select([.withoutRating])
+        XCTAssertEqual(view.places?.count, 1)
+        XCTAssertEqual(view.places?[0].name, "Place 1")
+        
+        // Filter by known rating
+        presenter.userTappedFilterButton()
+        filterTypePicker?.select([.withRating])
+        XCTAssertEqual(view.places?.count, 3)
+        XCTAssertEqual(view.places?[0].name, "Place 2")
+        XCTAssertEqual(view.places?[1].name, "Place 3")
+        XCTAssertEqual(view.places?[2].name, "Place 4 with amazingly long name for whatever reason")
     }
     
     func testPullToRefresh() {
@@ -168,47 +274,43 @@ fileprivate class MockedMainPresenter: MainPresenter {
     
     var refreshPlacesListCalled: Bool = false
     override func refreshPlacesList() {
+        super.refreshPlacesList()
         refreshPlacesListCalled = true
     }
     
 }
 
 
-fileprivate class MockedMainView: AbstractMainView {
+fileprivate class MockedMainView: MainViewController {
     
-    var presenter: AbstractMainPresenter?
     var places: [AbstractPlace]?
     var errorMessage: String?
     var showingLoadingIndicator: Bool?
     var viewIsLoaded: Bool = false
     var pulledToRefresh: Bool = false
-    var delegate: AbstractMainViewDelegate?
     
-    func show(places: [AbstractPlace]) {
+    override func show(places: [AbstractPlace]) {
         self.places = places
     }
     
-    func pullToRefresh() {
+    override func pullToRefresh() {
         pulledToRefresh = true
     }
     
-    func show(errorMessage: String) {
+    override func show(errorMessage: String) {
         self.errorMessage = errorMessage
     }
     
-    func showLoadingIndicator() {
+    override func showLoadingIndicator() {
         self.showingLoadingIndicator = true
     }
     
-    func hideLoadingIndicator() {
+    override func hideLoadingIndicator() {
         self.showingLoadingIndicator = false
     }
     
-    func set(delegate: AbstractMainViewDelegate?) {
-        self.delegate = delegate
-    }
-    
-    func loadViewIfNeeded() {
+    override func loadViewIfNeeded() {
+        super.loadViewIfNeeded()
         viewIsLoaded = true
     }
     

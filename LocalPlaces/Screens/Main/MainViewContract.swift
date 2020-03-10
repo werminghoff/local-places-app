@@ -16,10 +16,13 @@ protocol AbstractMainViewDelegate: class {
 
 protocol AbstractMainView: class {
     var presenter: AbstractMainPresenter? { get set }
+    
     func show(places: [AbstractPlace])
     func show(errorMessage: String)
+    
     func showLoadingIndicator()
     func hideLoadingIndicator()
+    
     func pullToRefresh()
     func loadViewIfNeeded()
 }
@@ -28,14 +31,12 @@ protocol AbstractMainPresenter: class {
     var view: AbstractMainView { get }
     
     func refreshPlacesList()
+    
     func set(filters: [FilterType])
     func set(sorting: SortingType)
     func set(delegate: AbstractMainViewDelegate?)
     
     func userSelected(place: AbstractPlace)
-    
-    func getFilters() -> [FilterType]?
-    func getSorting() -> SortingType?
     
     func userTappedSortingButton()
     func userTappedFilterButton()

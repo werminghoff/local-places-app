@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, AbstractMainView, UITableViewDelegate, UITableViewDataSource {
     
     weak var presenter: AbstractMainPresenter?
     
@@ -63,11 +63,7 @@ class MainViewController: UIViewController {
         presenter?.userTappedFilterButton()
     }
     
-}
-
-// MARK: - AbstractMainView
-extension MainViewController: AbstractMainView {
-    
+    // MARK: - AbstractMainView
     func show(errorMessage: String) {
         let alertController = UIAlertController(title: "Error",
                                                 message: errorMessage,
@@ -88,7 +84,7 @@ extension MainViewController: AbstractMainView {
     }
     
     func showLoadingIndicator() {
-        // FIXME: spinner doesn't animate if UIViewController doesn't have a UIWindow yet, on iOS < 13.0
+        // FIXME: known bug: spinner doesn't animate if UIViewController doesn't have a UIWindow yet, on iOS < 13.0
         self.refreshControl.beginRefreshing()
     }
     
@@ -96,22 +92,14 @@ extension MainViewController: AbstractMainView {
         refreshControl.endRefreshing()
     }
     
-}
-
-// MARK: - UITableViewDelegate
-extension MainViewController: UITableViewDelegate {
-    
+    // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let place = places[indexPath.row]
         presenter?.userSelected(place: place)
     }
     
-}
-
-// MARK: - UITableViewDataSource
-extension MainViewController: UITableViewDataSource {
-    
+    // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return places.count
     }
@@ -121,5 +109,5 @@ extension MainViewController: UITableViewDataSource {
         cell.place = places[indexPath.row]
         return cell
     }
-        
+    
 }

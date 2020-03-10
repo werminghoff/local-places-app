@@ -12,13 +12,13 @@ extension Array where Element == AbstractPlace {
     
     func sortedByHigherRating() -> Self {
         return self.sorted { (place1, place2) -> Bool in
-            (place1.rating ?? 0.0) > (place2.rating ?? 0.0)
+            (place1.rating ?? Double.leastNonzeroMagnitude) > (place2.rating ?? Double.leastNonzeroMagnitude)
         }
     }
     
     func sortedByLowerRating() -> Self {
         return self.sorted { (place1, place2) -> Bool in
-            (place1.rating ?? 0.0) < (place2.rating ?? 0.0)
+            (place1.rating ?? Double.greatestFiniteMagnitude) < (place2.rating ?? Double.greatestFiniteMagnitude)
         }
     }
  
