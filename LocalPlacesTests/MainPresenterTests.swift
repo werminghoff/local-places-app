@@ -1,5 +1,5 @@
 //
-//  MainScreenTests.swift
+//  MainPresenterTests.swift
 //  LocalPlacesTests
 //
 //  Created by Bruno Rigo Werminghoff on 08/03/20.
@@ -10,7 +10,7 @@ import XCTest
 @testable import LocalPlaces
 @testable import Resolver
 
-class MainScreenTests: XCTestCase {
+class MainPresenterTests: XCTestCase {
     
     var selectedPlace: AbstractPlace?
     var selectedFilters: [FilterType]?
@@ -219,25 +219,63 @@ class MainScreenTests: XCTestCase {
         XCTAssertEqual(view.places?[2].name, "Place 4 with amazingly long name for whatever reason")
     }
     
+    /**
+    - Given: Main screen is loaded
+    - When: User performs a pull-to-refresh swipe movement
+    - Then: Presenter is notified of the event
+    */
     func testPullToRefresh() {
-        Resolver.register { MockedMainPresenter() as AbstractMainPresenter }
-        Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
-        Resolver.register { MockedSuccessfulPlacesService() as AbstractPlacesService }
-        
-        let presenter: AbstractMainPresenter = Resolver.resolve()
-        presenter.view.pullToRefresh()
-        let mockedPresenter = presenter as! MockedMainPresenter
-        
-        XCTAssertEqual(mockedPresenter.refreshPlacesListCalled, true)
-    }
-    
-    func testDelegateGetsNotifiedOfPlaceSelection() {
         let placesService = MockedSuccessfulPlacesService()
+        let view = MockedMainView()
+
+        Resolver.register { view as AbstractMainView }
         Resolver.register { MockedMainPresenter() as AbstractMainPresenter }
         Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
         Resolver.register { placesService as AbstractPlacesService }
         
         let presenter: AbstractMainPresenter = Resolver.resolve()
+        let mockedPresenter = presenter as! MockedMainPresenter
+        
+        // Initial load
+        XCTAssertEqual(view.places?.count, 4)
+        XCTAssertEqual(view.places?[0].name, "Place 3")
+        XCTAssertEqual(view.places?[1].name, "Place 2")
+        XCTAssertEqual(view.places?[2].name, "Place 4 with amazingly long name for whatever reason")
+        XCTAssertEqual(view.places?[3].name, "Place 1")
+        XCTAssertEqual(mockedPresenter.refreshPlacesListCalled, false)
+        
+        // Replace the places in our PlacesService as if the user moved to another place
+        placesService.places = [
+            MockedSuccessfulPlacesService.MockedPlaceModel(id: "place_new",
+                                                           name: "New place",
+                                                           coordinate: Coordinate(latitude: 0.0, longitude: 0.0),
+                                                           isOpenNow: true,
+                                                           rating: 5.0,
+                                                           photoIdentifier: nil,
+                                                           distance: 100,
+                                                           formattedDistance: "100m")
+        ]
+        
+        view.pullToRefresh()
+        XCTAssertEqual(mockedPresenter.refreshPlacesListCalled, true)
+        XCTAssertEqual(view.places?.count, 1)
+        XCTAssertEqual(view.places?[0].name, "New place")
+    }
+    
+    /**
+    - Given: Main screen is loaded
+    - When: User selects one of the places listed on the app
+    - Then: Main view's delegate receives the selected place
+    */
+    func testDelegateReceivesUserSelectedPlace() {
+        let placesService = MockedSuccessfulPlacesService()
+        let view = MockedMainView()
+        let presenter = MockedMainPresenter()
+        Resolver.register { view as AbstractMainView }
+        Resolver.register { presenter as AbstractMainPresenter }
+        Resolver.register { MockedSuccessfulLocationService() as AbstractLocationService }
+        Resolver.register { placesService as AbstractPlacesService }
+        
         let place = placesService.places.first! as AbstractPlace
         presenter.set(delegate: self)
         presenter.userSelected(place: place)
@@ -247,7 +285,7 @@ class MainScreenTests: XCTestCase {
 }
 
 // MARK: - AbstractMainViewDelegate
-extension MainScreenTests: AbstractMainViewDelegate {
+extension MainPresenterTests: AbstractMainViewDelegate {
 
     func mainViewSelected(_ place: AbstractPlace) {
         selectedPlace = place
@@ -274,8 +312,8 @@ fileprivate class MockedMainPresenter: MainPresenter {
     
     var refreshPlacesListCalled: Bool = false
     override func refreshPlacesList() {
-        super.refreshPlacesList()
         refreshPlacesListCalled = true
+        super.refreshPlacesList()
     }
     
 }
@@ -290,22 +328,27 @@ fileprivate class MockedMainView: MainViewController {
     var pulledToRefresh: Bool = false
     
     override func show(places: [AbstractPlace]) {
+        super.show(places: places)
         self.places = places
     }
     
     override func pullToRefresh() {
+        super.pullToRefresh()
         pulledToRefresh = true
     }
     
     override func show(errorMessage: String) {
+        super.show(errorMessage: errorMessage)
         self.errorMessage = errorMessage
     }
     
     override func showLoadingIndicator() {
+        super.showLoadingIndicator()
         self.showingLoadingIndicator = true
     }
     
     override func hideLoadingIndicator() {
+        super.hideLoadingIndicator()
         self.showingLoadingIndicator = false
     }
     

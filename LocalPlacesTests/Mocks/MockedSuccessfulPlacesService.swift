@@ -29,7 +29,7 @@ class MockedSuccessfulPlacesService: AbstractPlacesService {
         var text: String
     }
     
-    let places: [AbstractPlace] = [
+    var places: [AbstractPlace] = [
         MockedPlaceModel(id: "place1",
                          name: "Place 1",
                          coordinate: Coordinate(latitude: -30.024834, longitude: -51.183043),
@@ -64,7 +64,7 @@ class MockedSuccessfulPlacesService: AbstractPlacesService {
                          formattedDistance: ""),
     ]
     
-    let reviews: [PlaceID: [AbstractReview]] = [
+    var reviews: [PlaceID: [AbstractReview]] = [
         "place1": [
             MocketReviewModel(username: "Bruno", rating: 4.5, text: "Lorem ipsum dolor sit amet."),
             MocketReviewModel(username: "John", rating: 1.0, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum."),

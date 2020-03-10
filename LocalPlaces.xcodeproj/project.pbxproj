@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1519D1D5241599700076D742 /* MainScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1D4241599700076D742 /* MainScreenTests.swift */; };
+		1519D1D5241599700076D742 /* MainPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1D4241599700076D742 /* MainPresenterTests.swift */; };
 		1519D1D824159B760076D742 /* MockedSuccessfulLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1D724159B760076D742 /* MockedSuccessfulLocationService.swift */; };
 		1519D1DA24159BB30076D742 /* MockedFailableLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1D924159BB30076D742 /* MockedFailableLocationService.swift */; };
 		1519D1DC24159BEF0076D742 /* MockedSuccessfulPlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1DB24159BEF0076D742 /* MockedSuccessfulPlacesService.swift */; };
 		1519D1DE24159C290076D742 /* MockedFailablePlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1DD24159C290076D742 /* MockedFailablePlacesService.swift */; };
 		1519D1E02415A1440076D742 /* MockedSortingTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1DF2415A1440076D742 /* MockedSortingTypePicker.swift */; };
 		1519D1E22415A6880076D742 /* MockedFilterTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1E12415A6880076D742 /* MockedFilterTypePicker.swift */; };
+		1535D17D241756D6001F63C9 /* UIBarButtonItemExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535D17C241756D6001F63C9 /* UIBarButtonItemExtensionsTests.swift */; };
+		1535D17F24175CD0001F63C9 /* FilterTypesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535D17E24175CD0001F63C9 /* FilterTypesTests.swift */; };
+		1535D18124175D5A001F63C9 /* SortingTypesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535D18024175D5A001F63C9 /* SortingTypesTests.swift */; };
+		1535D18324175DD8001F63C9 /* UIViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535D18224175DD8001F63C9 /* UIViewExtensionsTests.swift */; };
+		1535D18524175E85001F63C9 /* UITableViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535D18424175E85001F63C9 /* UITableViewExtensionsTests.swift */; };
+		1535D187241760CA001F63C9 /* UIColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535D186241760CA001F63C9 /* UIColorExtensionTests.swift */; };
 		1540A69E241449E9002AE1AD /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A69D241449E9002AE1AD /* UIView+AutoLayout.swift */; };
-		1540A6A024144BF9002AE1AD /* MockedPlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A69F24144BF9002AE1AD /* MockedPlacesService.swift */; };
-		1540A6A424145694002AE1AD /* MockedLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6A324145694002AE1AD /* MockedLocationService.swift */; };
 		1540A6A624148D25002AE1AD /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6A524148D25002AE1AD /* Coordinate.swift */; };
 		1540A6A8241494C8002AE1AD /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6A7241494C8002AE1AD /* PlaceTableViewCell.swift */; };
 		1540A6AA241494F6002AE1AD /* UITableView+AutoIdentifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1540A6A9241494F6002AE1AD /* UITableView+AutoIdentifyCell.swift */; };
@@ -69,16 +73,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1519D1D4241599700076D742 /* MainScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTests.swift; sourceTree = "<group>"; };
+		1519D1D4241599700076D742 /* MainPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterTests.swift; sourceTree = "<group>"; };
 		1519D1D724159B760076D742 /* MockedSuccessfulLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedSuccessfulLocationService.swift; sourceTree = "<group>"; };
 		1519D1D924159BB30076D742 /* MockedFailableLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedFailableLocationService.swift; sourceTree = "<group>"; };
 		1519D1DB24159BEF0076D742 /* MockedSuccessfulPlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedSuccessfulPlacesService.swift; sourceTree = "<group>"; };
 		1519D1DD24159C290076D742 /* MockedFailablePlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedFailablePlacesService.swift; sourceTree = "<group>"; };
 		1519D1DF2415A1440076D742 /* MockedSortingTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedSortingTypePicker.swift; sourceTree = "<group>"; };
 		1519D1E12415A6880076D742 /* MockedFilterTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedFilterTypePicker.swift; sourceTree = "<group>"; };
+		1535D17C241756D6001F63C9 /* UIBarButtonItemExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtensionsTests.swift; sourceTree = "<group>"; };
+		1535D17E24175CD0001F63C9 /* FilterTypesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTypesTests.swift; sourceTree = "<group>"; };
+		1535D18024175D5A001F63C9 /* SortingTypesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingTypesTests.swift; sourceTree = "<group>"; };
+		1535D18224175DD8001F63C9 /* UIViewExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensionsTests.swift; sourceTree = "<group>"; };
+		1535D18424175E85001F63C9 /* UITableViewExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensionsTests.swift; sourceTree = "<group>"; };
+		1535D186241760CA001F63C9 /* UIColorExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensionTests.swift; sourceTree = "<group>"; };
 		1540A69D241449E9002AE1AD /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
-		1540A69F24144BF9002AE1AD /* MockedPlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedPlacesService.swift; sourceTree = "<group>"; };
-		1540A6A324145694002AE1AD /* MockedLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedLocationService.swift; sourceTree = "<group>"; };
 		1540A6A524148D25002AE1AD /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		1540A6A7241494C8002AE1AD /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		1540A6A9241494F6002AE1AD /* UITableView+AutoIdentifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+AutoIdentifyCell.swift"; sourceTree = "<group>"; };
@@ -162,15 +170,6 @@
 				1556E07A24157DB8009DDC52 /* ReviewTableViewCell.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		1540A6A224145679002AE1AD /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				1540A69F24144BF9002AE1AD /* MockedPlacesService.swift */,
-				1540A6A324145694002AE1AD /* MockedLocationService.swift */,
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 		1540A6B324153E24002AE1AD /* Enums */ = {
@@ -349,7 +348,6 @@
 			isa = PBXGroup;
 			children = (
 				1540A6B324153E24002AE1AD /* Enums */,
-				1540A6A224145679002AE1AD /* Mocks */,
 				1540A6A1241455DF002AE1AD /* Views */,
 				1569ABEB24143F1B00E5786E /* Annotations */,
 				1569ABE424143A4C00E5786E /* Extensions */,
@@ -370,7 +368,13 @@
 			children = (
 				1519D1D624159B6B0076D742 /* Mocks */,
 				15B43B0B2414165B002E5EE3 /* Info.plist */,
-				1519D1D4241599700076D742 /* MainScreenTests.swift */,
+				1519D1D4241599700076D742 /* MainPresenterTests.swift */,
+				1535D17C241756D6001F63C9 /* UIBarButtonItemExtensionsTests.swift */,
+				1535D17E24175CD0001F63C9 /* FilterTypesTests.swift */,
+				1535D18024175D5A001F63C9 /* SortingTypesTests.swift */,
+				1535D18224175DD8001F63C9 /* UIViewExtensionsTests.swift */,
+				1535D18424175E85001F63C9 /* UITableViewExtensionsTests.swift */,
+				1535D186241760CA001F63C9 /* UIColorExtensionTests.swift */,
 			);
 			path = LocalPlacesTests;
 			sourceTree = "<group>";
@@ -486,7 +490,6 @@
 				1540A6D324157204002AE1AD /* DetailViewController.swift in Sources */,
 				15B43AF324141658002E5EE3 /* AppDelegate.swift in Sources */,
 				1540A6D724157356002AE1AD /* AbstractReview.swift in Sources */,
-				1540A6A024144BF9002AE1AD /* MockedPlacesService.swift in Sources */,
 				1540A6BB24154CF9002AE1AD /* Coordinate+CoreLocation.swift in Sources */,
 				1569ABF22414402600E5786E /* MainPresenter.swift in Sources */,
 				1540A6AC24149548002AE1AD /* UITableViewCellExtension.swift in Sources */,
@@ -510,7 +513,6 @@
 				1540A6A8241494C8002AE1AD /* PlaceTableViewCell.swift in Sources */,
 				158D4BEC241584E8000CB13D /* CoreLocationService.swift in Sources */,
 				1556E07B24157DB8009DDC52 /* ReviewTableViewCell.swift in Sources */,
-				1540A6A424145694002AE1AD /* MockedLocationService.swift in Sources */,
 				1540A6BF24154F5B002AE1AD /* EnumPickerViewController.swift in Sources */,
 				1540A6B924154773002AE1AD /* SortingType.swift in Sources */,
 				1540A6C724156501002AE1AD /* AbstractSortingTypePicker.swift in Sources */,
@@ -528,12 +530,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1519D1D5241599700076D742 /* MainScreenTests.swift in Sources */,
+				1535D17D241756D6001F63C9 /* UIBarButtonItemExtensionsTests.swift in Sources */,
+				1519D1D5241599700076D742 /* MainPresenterTests.swift in Sources */,
+				1535D18524175E85001F63C9 /* UITableViewExtensionsTests.swift in Sources */,
 				1519D1DC24159BEF0076D742 /* MockedSuccessfulPlacesService.swift in Sources */,
 				1519D1DE24159C290076D742 /* MockedFailablePlacesService.swift in Sources */,
 				1519D1E02415A1440076D742 /* MockedSortingTypePicker.swift in Sources */,
+				1535D18324175DD8001F63C9 /* UIViewExtensionsTests.swift in Sources */,
 				1519D1E22415A6880076D742 /* MockedFilterTypePicker.swift in Sources */,
 				1519D1DA24159BB30076D742 /* MockedFailableLocationService.swift in Sources */,
+				1535D187241760CA001F63C9 /* UIColorExtensionTests.swift in Sources */,
+				1535D17F24175CD0001F63C9 /* FilterTypesTests.swift in Sources */,
+				1535D18124175D5A001F63C9 /* SortingTypesTests.swift in Sources */,
 				1519D1D824159B760076D742 /* MockedSuccessfulLocationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
