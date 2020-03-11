@@ -16,7 +16,7 @@ class SortingScreenUITests: XCTestCase {
         continueAfterFailure = false
     }
 
-    func testSortingOptionsCellas() {
+    func testSortingOptionsCells() {
         
         let app = XCUIApplication()
         app.launchArguments = [

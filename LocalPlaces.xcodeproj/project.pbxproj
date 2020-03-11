@@ -14,6 +14,7 @@
 		1519D1DE24159C290076D742 /* MockedFailablePlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1DD24159C290076D742 /* MockedFailablePlacesService.swift */; };
 		1519D1E02415A1440076D742 /* MockedSortingTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1DF2415A1440076D742 /* MockedSortingTypePicker.swift */; };
 		1519D1E22415A6880076D742 /* MockedFilterTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1E12415A6880076D742 /* MockedFilterTypePicker.swift */; };
+		152F06232418B26C007F8510 /* DetailViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152F06222418B26B007F8510 /* DetailViewUITests.swift */; };
 		1535D17D241756D6001F63C9 /* UIBarButtonItemExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535D17C241756D6001F63C9 /* UIBarButtonItemExtensionsTests.swift */; };
 		1535D17F24175CD0001F63C9 /* FilterTypesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535D17E24175CD0001F63C9 /* FilterTypesTests.swift */; };
 		1535D18124175D5A001F63C9 /* SortingTypesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535D18024175D5A001F63C9 /* SortingTypesTests.swift */; };
@@ -107,6 +108,7 @@
 		1519D1DD24159C290076D742 /* MockedFailablePlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedFailablePlacesService.swift; sourceTree = "<group>"; };
 		1519D1DF2415A1440076D742 /* MockedSortingTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedSortingTypePicker.swift; sourceTree = "<group>"; };
 		1519D1E12415A6880076D742 /* MockedFilterTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedFilterTypePicker.swift; sourceTree = "<group>"; };
+		152F06222418B26B007F8510 /* DetailViewUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewUITests.swift; sourceTree = "<group>"; };
 		1535D17C241756D6001F63C9 /* UIBarButtonItemExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtensionsTests.swift; sourceTree = "<group>"; };
 		1535D17E24175CD0001F63C9 /* FilterTypesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTypesTests.swift; sourceTree = "<group>"; };
 		1535D18024175D5A001F63C9 /* SortingTypesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingTypesTests.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 		15AB2F8A241871AF00DBA451 /* LocalPlacesUITests */ = {
 			isa = PBXGroup;
 			children = (
+				152F06222418B26B007F8510 /* DetailViewUITests.swift */,
 				15AB2F8B241871AF00DBA451 /* MainScreenUITests.swift */,
 				15AB2F8C241871AF00DBA451 /* Info.plist */,
 				15AB0C0224189C1F001047C1 /* SortingScreenUITests.swift */,
@@ -616,6 +619,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15AB0C0324189C1F001047C1 /* SortingScreenUITests.swift in Sources */,
+				152F06232418B26C007F8510 /* DetailViewUITests.swift in Sources */,
 				15AB2F8D241871AF00DBA451 /* MainScreenUITests.swift in Sources */,
 				15AB2F9824187FA200DBA451 /* AppLaunchArguments.swift in Sources */,
 				15AB0C052418A138001047C1 /* FilterScreenUITests.swift in Sources */,

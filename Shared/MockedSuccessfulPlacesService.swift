@@ -77,7 +77,7 @@ class MockedSuccessfulPlacesService: AbstractPlacesService {
             MocketReviewModel(username: "Maria", rating: 2.0, text: "Etiam feugiat nisi commodo ex efficitur, a suscipit lorem auctor. Aliquam elit sem, tincidunt id metus et, sagittis dictum purus. ")
         ],
         "place3": [
-            MocketReviewModel(username: "David", rating: 4.0, text: "Phasellus rhoncus porta tristique. Donec quam sapien, viverra eget eleifend eget, cursus non turpis. Vestibulum eget enim nec augue semper tristique. Fusce vel lobortis est. Suspendisse blandit, ligula et convallis tempor, massa arcu vehicula felis, porta varius enim arcu sit amet lectus."),
+            MocketReviewModel(username: "David", rating: 4.0, text: "Phasellus rhoncus porta tristique."),
             MocketReviewModel(username: "Pablo Garcia Gomez Herrero Long Name", rating: 4.0, text: "Phasellus rhoncus porta tristique. Donec quam sapien, viverra eget eleifend eget, cursus non turpis. Vestibulum eget enim nec augue semper tristique. Fusce vel lobortis est. Suspendisse blandit, ligula et convallis tempor, massa arcu vehicula felis, porta varius enim arcu sit amet lectus."),
         ],
         "place4": []

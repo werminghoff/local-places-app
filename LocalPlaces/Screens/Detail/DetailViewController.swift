@@ -34,6 +34,15 @@ class DetailViewController: UIViewController, AbstractDetailView {
     private func setupViews() {
         view.backgroundColor = .white
         
+        photoImageView.accessibilityIdentifier = Accessibility.detailPhoto.identifier
+        
+        photoNotAvailableLabel.accessibilityIdentifier = Accessibility.errorLoadingPhotoLabel.identifier
+        emptyStateLabel.accessibilityIdentifier = Accessibility.errorLoadingReviewsLabel.identifier
+        
+        ratingLabel.accessibilityIdentifier = Accessibility.detailRating.identifier
+        openImageView.accessibilityIdentifier = Accessibility.detailOpen.identifier
+        nameLabel.accessibilityIdentifier = Accessibility.detailName.identifier
+        
         view.addSubview(dividerView)
         view.addSubview(photoImageView)
         view.addSubview(emptyStateLabel)
@@ -90,7 +99,7 @@ class DetailViewController: UIViewController, AbstractDetailView {
             "tableView": tableView
         ]
         
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[photoImageView]-16-[nameLabel]-8-[ratingLabel]-8-[dividerView(0.3)][tableView]|", metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[photoImageView]-16-[nameLabel]-8-[ratingLabel]-16-[dividerView(0.3)][tableView]|", metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[nameLabel]-16-[openImageView]-16-|", metrics: nil, views: views))
         
         view.addConstraints([
@@ -134,28 +143,32 @@ class DetailViewController: UIViewController, AbstractDetailView {
         nameLabel.text = "\(place.name) (\(place.formattedDistance))"
         
         if let rating = place.rating {
-            ratingLabel.text = String(format: "Rating: %01.1lf", rating)
+            ratingLabel.text = String(format: "Average rating: %01.1lf", rating)
         } else {
-            ratingLabel.text = "Rating unavailable"
+            ratingLabel.text = "Average rating unavailable"
         }
         
         if place.isOpenNow == true {
             openImageView.image = #imageLiteral(resourceName: "icon_open")
+            openImageView.accessibilityValue = Accessibility.statusOpen
         } else if place.isOpenNow == false {
             openImageView.image = #imageLiteral(resourceName: "icon_closed")
+            openImageView.accessibilityValue = Accessibility.statusClosed
         } else {
+            openImageView.accessibilityValue = Accessibility.statusNone
             openImageView.image = nil
         }
-        
         
     }
     
     func show(photo: UIImage?) {
         if let photo = photo {
+            photoImageView.accessibilityValue = Accessibility.statusPhotoLoaded
             photoImageView.isHidden = false
             photoImageView.image = photo
             photoNotAvailableLabel.isHidden = true
         } else {
+            photoImageView.accessibilityValue = Accessibility.statusNone
             photoImageView.isHidden = true
             photoImageView.image = nil
             photoNotAvailableLabel.isHidden = false
@@ -211,7 +224,11 @@ extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(ReviewTableViewCell.self, for: indexPath)
-        cell.review = reviews[indexPath.row]
+        let row = indexPath.row
+        cell.review = reviews[row]
+        cell.usernameLabel.accessibilityIdentifier = Accessibility.reviewName(row).identifier
+        cell.reviewLabel.accessibilityIdentifier = Accessibility.reviewText(row).identifier
+        cell.ratingLabel.accessibilityIdentifier = Accessibility.reviewRating(row).identifier
         return cell
     }
 }

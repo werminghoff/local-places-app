@@ -26,15 +26,7 @@ class MainPresenter: AbstractMainPresenter {
         view.presenter = self
         view.loadViewIfNeeded()
         view.showLoadingIndicator()
-        locationService.fetch { [weak self] (coordinate, error) in
-            if let error = error {
-                self?.view.hideLoadingIndicator()
-                self?.view.show(errorMessage: error)
-            } else if let coordinate = coordinate {
-                self?.lastKnownCoordinate = coordinate
-                self?.fetchPlacesNear(coordinate)
-            }
-        }
+        fetchLocation()
     }
     
     private func fetchPlacesNear(_ coordinate: Coordinate) {
@@ -55,10 +47,24 @@ class MainPresenter: AbstractMainPresenter {
         
     }
     
+    private func fetchLocation() {
+        locationService.fetch { [weak self] (coordinate, error) in
+            if let error = error {
+                self?.view.hideLoadingIndicator()
+                self?.view.show(errorMessage: error)
+            } else if let coordinate = coordinate {
+                self?.lastKnownCoordinate = coordinate
+                self?.fetchPlacesNear(coordinate)
+            }
+        }
+    }
+    
     func refreshPlacesList() {
         if let coordinate = lastKnownCoordinate {
             view.showLoadingIndicator()
             fetchPlacesNear(coordinate)
+        } else {
+            fetchLocation()
         }
     }
     

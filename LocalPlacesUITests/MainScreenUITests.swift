@@ -83,6 +83,26 @@ class MainScreenUITests: XCTestCase {
         
     }
     
+    func testPullToRefresh() {
+        
+        let app = XCUIApplication()
+        app.launchArguments = [
+            AppLaunchArguments.withMocks.rawValue,
+            AppLaunchArguments.noLayerAnimations.rawValue,
+            AppLaunchArguments.withDelayedServices.rawValue,
+            AppLaunchArguments.setLocale.rawValue,
+            AppLaunchArguments.locale_US.rawValue]
+        app.activate()
+        
+        let firstCell = app.tables.cells[Accessibility.placeCell(0).identifier]
+        
+        let start = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
+        let finish = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 8))
+        start.press(forDuration: 0, thenDragTo: finish)
+        
+        app.terminate()
+    }
+    
     func testMainScreenErrorOnFetchLocation() {
         
         let app = XCUIApplication()

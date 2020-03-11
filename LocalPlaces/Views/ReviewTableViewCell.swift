@@ -10,9 +10,9 @@ import UIKit
 
 class ReviewTableViewCell: UITableViewCell {
     
-    private let usernameLabel = UILabel.autoLayout()
-    private let reviewLabel = UILabel.autoLayout()
-    private let ratingLabel = UILabel.autoLayout()
+    let usernameLabel = UILabel.autoLayout()
+    let reviewLabel = UILabel.autoLayout()
+    let ratingLabel = UILabel.autoLayout()
     
     var review: AbstractReview? {
         didSet{

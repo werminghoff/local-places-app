@@ -26,15 +26,20 @@ enum Accessibility {
     case detailRating
     case detailOpen
     case detailName
+    case detailPhoto
     
     case reviewName(Int)
     case reviewText(Int)
     case reviewRating(Int)
     
+    case errorLoadingPhotoLabel
+    case errorLoadingReviewsLabel
+    
     static let statusOpen = "open"
     static let statusClosed = "closed"
     static let statusChecked = "checked"
     static let statusNone = ""
+    static let statusPhotoLoaded = "photo_loaded"
     
     var identifier: String {
         switch self {
@@ -54,12 +59,15 @@ enum Accessibility {
             
         case .detailRating: return "detail_rating"
         case .detailOpen: return "detail_open"
-        case .detailName: return "detail_now"
+        case .detailName: return "detail_name"
+        case .detailPhoto: return "detail_photo"
             
         case .reviewName(let row): return "review_name_\(row)"
         case .reviewText(let row): return "review_text_\(row)"
         case .reviewRating(let row): return "review_rating(\(row)"
-            
+        
+        case .errorLoadingPhotoLabel: return "error_loading_photo"
+        case .errorLoadingReviewsLabel: return "error_loading_reviews"
         }
     }
     
