@@ -13,7 +13,7 @@ class SortingScreenUITests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        continueAfterFailure = true
+        continueAfterFailure = false
     }
 
     func testSortingOptionsCellas() {
@@ -22,9 +22,7 @@ class SortingScreenUITests: XCTestCase {
         app.launchArguments = [
             AppLaunchArguments.withMocks.rawValue,
             AppLaunchArguments.noLayerAnimations.rawValue,
-            AppLaunchArguments.noViewAnimations.rawValue,
-            AppLaunchArguments.setLocale.rawValue,
-            AppLaunchArguments.locale_BR.rawValue]
+            AppLaunchArguments.noViewAnimations.rawValue]
         app.activate()
         
         app.buttons[Accessibility.sortButton.identifier].tap()

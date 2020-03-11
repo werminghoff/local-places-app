@@ -20,9 +20,9 @@ class FilterTypePickerViewController: MultipleEnumPickerViewController<FilterTyp
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         cell.textLabel?.accessibilityIdentifier = Accessibility.filterTypeLabel(indexPath.row).identifier
         if cell.accessoryType == .checkmark {
-            cell.accessibilityValue = Accessibility.statusChecked
+            cell.textLabel?.accessibilityValue = Accessibility.statusChecked
         } else {
-            cell.accessibilityValue = Accessibility.statusNone
+            cell.textLabel?.accessibilityValue = Accessibility.statusNone
         }
         return cell
     }
