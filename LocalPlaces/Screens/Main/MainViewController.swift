@@ -106,7 +106,12 @@ class MainViewController: UIViewController, AbstractMainView, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(PlaceTableViewCell.self, for: indexPath)
-        cell.place = places[indexPath.row]
+        let row = indexPath.row
+        cell.place = places[row]
+        cell.nameLabel.accessibilityIdentifier = Accessibility.placeName(row).identifier
+        cell.ratingLabel.accessibilityIdentifier = Accessibility.placeRating(row).identifier
+        cell.openImageView.accessibilityIdentifier = Accessibility.placeOpen(row).identifier
+        cell.accessibilityIdentifier = Accessibility.placeCell(row).identifier
         return cell
     }
     

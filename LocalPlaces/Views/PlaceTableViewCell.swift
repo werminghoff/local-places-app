@@ -10,9 +10,9 @@ import UIKit
 
 class PlaceTableViewCell: UITableViewCell {
     
-    private let ratingLabel = UILabel.autoLayout()
-    private let nameLabel = UILabel.autoLayout()
-    private let openImageView = UIImageView.autoLayout()
+    let ratingLabel = UILabel.autoLayout()
+    let nameLabel = UILabel.autoLayout()
+    let openImageView = UIImageView.autoLayout()
     
     var place: AbstractPlace? {
         didSet{
@@ -70,6 +70,7 @@ class PlaceTableViewCell: UITableViewCell {
             ratingLabel.text = ""
             nameLabel.text = ""
             openImageView.image = nil
+            openImageView.accessibilityLabel = ""
             return
         }
         
@@ -83,9 +84,12 @@ class PlaceTableViewCell: UITableViewCell {
         
         if place.isOpenNow == true {
             openImageView.image = #imageLiteral(resourceName: "icon_open")
+            openImageView.accessibilityLabel = Accessibility.statusOpen
         } else if place.isOpenNow == false {
             openImageView.image = #imageLiteral(resourceName: "icon_closed")
+            openImageView.accessibilityLabel = Accessibility.statusClosed
         } else {
+            openImageView.accessibilityLabel = ""
             openImageView.image = nil
         }
         

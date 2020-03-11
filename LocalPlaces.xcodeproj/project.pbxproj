@@ -64,14 +64,30 @@
 		158D4BEA241580DD000CB13D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 158D4BE9241580DD000CB13D /* Alamofire */; };
 		158D4BEC241584E8000CB13D /* CoreLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D4BEB241584E8000CB13D /* CoreLocationService.swift */; };
 		158D4BEE24158A59000CB13D /* GooglePlacesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D4BED24158A59000CB13D /* GooglePlacesAPIService.swift */; };
+		158FFE9E241886E20025E788 /* Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158FFE9D241886E20025E788 /* Accessibility.swift */; };
+		158FFE9F241886E60025E788 /* Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158FFE9D241886E20025E788 /* Accessibility.swift */; };
 		15A7672D2417729000789CF0 /* MockedAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A7672C2417729000789CF0 /* MockedAppCoordinator.swift */; };
 		15A7672F2417755900789CF0 /* ReviewTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A7672E2417755900789CF0 /* ReviewTableViewCellTests.swift */; };
 		15A767312417763700789CF0 /* PlaceTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A767302417763700789CF0 /* PlaceTableViewCellTests.swift */; };
+		15AB2F8D241871AF00DBA451 /* LocalPlacesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB2F8B241871AF00DBA451 /* LocalPlacesUITests.swift */; };
+		15AB2F902418766400DBA451 /* AppLaunchArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB2F8F2418766400DBA451 /* AppLaunchArguments.swift */; };
+		15AB2F9324187E6900DBA451 /* MockedSuccessfulLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1D724159B760076D742 /* MockedSuccessfulLocationService.swift */; };
+		15AB2F9424187E6900DBA451 /* MockedFailableLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1D924159BB30076D742 /* MockedFailableLocationService.swift */; };
+		15AB2F9524187E6900DBA451 /* MockedSuccessfulPlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1DB24159BEF0076D742 /* MockedSuccessfulPlacesService.swift */; };
+		15AB2F9624187E6900DBA451 /* MockedFailablePlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D1DD24159C290076D742 /* MockedFailablePlacesService.swift */; };
+		15AB2F9824187FA200DBA451 /* AppLaunchArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB2F8F2418766400DBA451 /* AppLaunchArguments.swift */; };
 		15B43AF324141658002E5EE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B43AF224141658002E5EE3 /* AppDelegate.swift */; };
 		15B43AFC2414165B002E5EE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15B43AFB2414165B002E5EE3 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		15AB2F852418711600DBA451 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15B43AE724141658002E5EE3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 15B43AEE24141658002E5EE3;
+			remoteInfo = LocalPlaces;
+		};
 		15B43B062414165B002E5EE3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 15B43AE724141658002E5EE3 /* Project object */;
@@ -137,9 +153,14 @@
 		1569ABF12414402600E5786E /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		158D4BEB241584E8000CB13D /* CoreLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationService.swift; sourceTree = "<group>"; };
 		158D4BED24158A59000CB13D /* GooglePlacesAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesAPIService.swift; sourceTree = "<group>"; };
+		158FFE9D241886E20025E788 /* Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessibility.swift; sourceTree = "<group>"; };
 		15A7672C2417729000789CF0 /* MockedAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedAppCoordinator.swift; sourceTree = "<group>"; };
 		15A7672E2417755900789CF0 /* ReviewTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCellTests.swift; sourceTree = "<group>"; };
 		15A767302417763700789CF0 /* PlaceTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCellTests.swift; sourceTree = "<group>"; };
+		15AB2F802418711600DBA451 /* LocalPlacesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalPlacesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15AB2F8B241871AF00DBA451 /* LocalPlacesUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalPlacesUITests.swift; sourceTree = "<group>"; };
+		15AB2F8C241871AF00DBA451 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15AB2F8F2418766400DBA451 /* AppLaunchArguments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchArguments.swift; sourceTree = "<group>"; };
 		15B43AEF24141658002E5EE3 /* LocalPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15B43AF224141658002E5EE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15B43AFB2414165B002E5EE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,6 +170,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		15AB2F7D2418711600DBA451 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		15B43AEC24141658002E5EE3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -173,20 +201,8 @@
 			children = (
 				15A7672B2417727100789CF0 /* Coordinators */,
 				1535D18B24176609001F63C9 /* Screens */,
-				1535D18A241765F8001F63C9 /* Services */,
 			);
 			path = Mocks;
-			sourceTree = "<group>";
-		};
-		1535D18A241765F8001F63C9 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				1519D1D724159B760076D742 /* MockedSuccessfulLocationService.swift */,
-				1519D1D924159BB30076D742 /* MockedFailableLocationService.swift */,
-				1519D1DB24159BEF0076D742 /* MockedSuccessfulPlacesService.swift */,
-				1519D1DD24159C290076D742 /* MockedFailablePlacesService.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		1535D18B24176609001F63C9 /* Screens */ = {
@@ -373,11 +389,35 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		15AB2F8A241871AF00DBA451 /* LocalPlacesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				15AB2F8B241871AF00DBA451 /* LocalPlacesUITests.swift */,
+				15AB2F8C241871AF00DBA451 /* Info.plist */,
+			);
+			path = LocalPlacesUITests;
+			sourceTree = "<group>";
+		};
+		15AB2F9224187E5700DBA451 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				15AB2F8F2418766400DBA451 /* AppLaunchArguments.swift */,
+				1519D1D724159B760076D742 /* MockedSuccessfulLocationService.swift */,
+				1519D1D924159BB30076D742 /* MockedFailableLocationService.swift */,
+				1519D1DB24159BEF0076D742 /* MockedSuccessfulPlacesService.swift */,
+				1519D1DD24159C290076D742 /* MockedFailablePlacesService.swift */,
+				158FFE9D241886E20025E788 /* Accessibility.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		15B43AE624141658002E5EE3 = {
 			isa = PBXGroup;
 			children = (
+				15AB2F9224187E5700DBA451 /* Shared */,
 				15B43AF124141658002E5EE3 /* LocalPlaces */,
 				15B43B082414165B002E5EE3 /* LocalPlacesTests */,
+				15AB2F8A241871AF00DBA451 /* LocalPlacesUITests */,
 				15B43AF024141658002E5EE3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -387,6 +427,7 @@
 			children = (
 				15B43AEF24141658002E5EE3 /* LocalPlaces.app */,
 				15B43B052414165B002E5EE3 /* LocalPlacesTests.xctest */,
+				15AB2F802418711600DBA451 /* LocalPlacesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -433,6 +474,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		15AB2F7F2418711600DBA451 /* LocalPlacesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15AB2F872418711600DBA451 /* Build configuration list for PBXNativeTarget "LocalPlacesUITests" */;
+			buildPhases = (
+				15AB2F7C2418711600DBA451 /* Sources */,
+				15AB2F7D2418711600DBA451 /* Frameworks */,
+				15AB2F7E2418711600DBA451 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				15AB2F862418711600DBA451 /* PBXTargetDependency */,
+			);
+			name = LocalPlacesUITests;
+			productName = LocalPlacesUITests;
+			productReference = 15AB2F802418711600DBA451 /* LocalPlacesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		15B43AEE24141658002E5EE3 /* LocalPlaces */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15B43B192414165B002E5EE3 /* Build configuration list for PBXNativeTarget "LocalPlaces" */;
@@ -482,6 +541,10 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Bruno Rigo Werminghoff";
 				TargetAttributes = {
+					15AB2F7F2418711600DBA451 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 15B43AEE24141658002E5EE3;
+					};
 					15B43AEE24141658002E5EE3 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -510,11 +573,19 @@
 			targets = (
 				15B43AEE24141658002E5EE3 /* LocalPlaces */,
 				15B43B042414165B002E5EE3 /* LocalPlacesTests */,
+				15AB2F7F2418711600DBA451 /* LocalPlacesUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		15AB2F7E2418711600DBA451 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		15B43AED24141658002E5EE3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -534,6 +605,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		15AB2F7C2418711600DBA451 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15AB2F8D241871AF00DBA451 /* LocalPlacesUITests.swift in Sources */,
+				15AB2F9824187FA200DBA451 /* AppLaunchArguments.swift in Sources */,
+				158FFE9F241886E60025E788 /* Accessibility.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		15B43AEB24141658002E5EE3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -541,11 +622,13 @@
 				1540A6D324157204002AE1AD /* DetailViewController.swift in Sources */,
 				15B43AF324141658002E5EE3 /* AppDelegate.swift in Sources */,
 				1540A6D724157356002AE1AD /* AbstractReview.swift in Sources */,
+				15AB2F902418766400DBA451 /* AppLaunchArguments.swift in Sources */,
 				1540A6BB24154CF9002AE1AD /* Coordinate+CoreLocation.swift in Sources */,
 				1569ABF22414402600E5786E /* MainPresenter.swift in Sources */,
 				1540A6AC24149548002AE1AD /* UITableViewCellExtension.swift in Sources */,
 				1540A6CA2415656B002AE1AD /* SortingTypePickerViewController.swift in Sources */,
 				1569ABC6241426A700E5786E /* MainViewController.swift in Sources */,
+				15AB2F9324187E6900DBA451 /* MockedSuccessfulLocationService.swift in Sources */,
 				1540A6C3241554CB002AE1AD /* UIBarButtonItem+StandardButtons.swift in Sources */,
 				1569ABE32414385B00E5786E /* AbstractPlace.swift in Sources */,
 				1540A6B524153E32002AE1AD /* FilterType.swift in Sources */,
@@ -561,6 +644,9 @@
 				1540A6AA241494F6002AE1AD /* UITableView+AutoIdentifyCell.swift in Sources */,
 				1569ABEA24143D4200E5786E /* AppCoordinator.swift in Sources */,
 				1569ABD624142A1300E5786E /* AbstractPlacesService.swift in Sources */,
+				15AB2F9424187E6900DBA451 /* MockedFailableLocationService.swift in Sources */,
+				15AB2F9524187E6900DBA451 /* MockedSuccessfulPlacesService.swift in Sources */,
+				15AB2F9624187E6900DBA451 /* MockedFailablePlacesService.swift in Sources */,
 				1540A6A8241494C8002AE1AD /* PlaceTableViewCell.swift in Sources */,
 				158D4BEC241584E8000CB13D /* CoreLocationService.swift in Sources */,
 				1556E07B24157DB8009DDC52 /* ReviewTableViewCell.swift in Sources */,
@@ -568,6 +654,7 @@
 				1540A6B924154773002AE1AD /* SortingType.swift in Sources */,
 				1540A6C724156501002AE1AD /* AbstractSortingTypePicker.swift in Sources */,
 				1569ABD424142A0400E5786E /* AbstractLocationService.swift in Sources */,
+				158FFE9E241886E20025E788 /* Accessibility.swift in Sources */,
 				1569ABF02414401E00E5786E /* MainViewContract.swift in Sources */,
 				1540A6A624148D25002AE1AD /* Coordinate.swift in Sources */,
 				1540A6B72415412F002AE1AD /* Array+RawRepresentable.swift in Sources */,
@@ -609,6 +696,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		15AB2F862418711600DBA451 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 15B43AEE24141658002E5EE3 /* LocalPlaces */;
+			targetProxy = 15AB2F852418711600DBA451 /* PBXContainerItemProxy */;
+		};
 		15B43B072414165B002E5EE3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 15B43AEE24141658002E5EE3 /* LocalPlaces */;
@@ -617,6 +709,44 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		15AB2F882418711600DBA451 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6GVN99X68W;
+				INFOPLIST_FILE = LocalPlacesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.LocalPlacesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LocalPlaces;
+			};
+			name = Debug;
+		};
+		15AB2F892418711600DBA451 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6GVN99X68W;
+				INFOPLIST_FILE = LocalPlacesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.LocalPlacesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LocalPlaces;
+			};
+			name = Release;
+		};
 		15B43B172414165B002E5EE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -816,6 +946,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		15AB2F872418711600DBA451 /* Build configuration list for PBXNativeTarget "LocalPlacesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15AB2F882418711600DBA451 /* Debug */,
+				15AB2F892418711600DBA451 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		15B43AEA24141658002E5EE3 /* Build configuration list for PBXProject "LocalPlaces" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

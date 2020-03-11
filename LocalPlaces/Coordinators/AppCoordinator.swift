@@ -20,10 +20,12 @@ protocol AbstractAppCoordinator: AbstractMainViewDelegate {
 class AppCoordinator: AbstractAppCoordinator {
     
     lazy private(set) var rootViewController: UIViewController = UINavigationController(rootViewController: self.mainPresenter.view as! UIViewController)
+    
     @Injected var mainPresenter: AbstractMainPresenter
+    @Injected var detailPresenter: AbstractDetailPresenter
+    
     @Injected var sortingTypePicker: AbstractSortingTypePicker
     @Injected var filterTypePicker: AbstractFilterTypePicker
-    @Injected var detailPresenter: AbstractDetailPresenter
     
     init() {
         mainPresenter.set(delegate: self)

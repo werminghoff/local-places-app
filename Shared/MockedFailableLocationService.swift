@@ -12,13 +12,21 @@ import Foundation
 class MockedFailableLocationService: MockedSuccessfulLocationService {
     var fetchError: String?
     
-    internal init(fetchError: String?) {
+    convenience init(delay: Double? = nil, fetchError: String?) {
+        self.init(delay: delay)
         self.fetchError = fetchError
     }
     
     override func fetch(_ callback: @escaping LocationUpdatedCallback) {
         if let fetchError = fetchError {
-            callback(nil, fetchError)
+            
+            if let delay = delay {
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                    callback(nil, fetchError)
+                }
+            } else {
+                callback(nil, fetchError)
+            }
         } else {
             super.fetch(callback)
         }
