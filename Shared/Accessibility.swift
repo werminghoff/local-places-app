@@ -14,8 +14,27 @@ enum Accessibility {
     case placeOpen(Int)
     case placeName(Int)
     
+    case cancelButton
+    case saveButton
+    
+    case sortButton
+    case sortingTypeLabel(Int)
+    
+    case filterButton
+    case filterTypeLabel(Int)
+    
+    case detailRating
+    case detailOpen
+    case detailName
+    
+    case reviewName(Int)
+    case reviewText(Int)
+    case reviewRating(Int)
+    
     static let statusOpen = "open"
     static let statusClosed = "closed"
+    static let statusChecked = "checked"
+    static let statusNone = ""
     
     var identifier: String {
         switch self {
@@ -23,6 +42,23 @@ enum Accessibility {
         case .placeRating(let row): return "place_rating_\(row)"
         case .placeOpen(let row): return "place_open_\(row)"
         case .placeName(let row): return "place_name_\(row)"
+            
+        case .cancelButton: return "cancel_button"
+        case .saveButton: return "save_button"
+            
+        case .sortButton: return "sort_button"
+        case .sortingTypeLabel(let row): return "sorting_type_\(row)"
+            
+        case .filterButton: return "filter_button"
+        case .filterTypeLabel(let row): return "filter_type_\(row)"
+            
+        case .detailRating: return "detail_rating"
+        case .detailOpen: return "detail_open"
+        case .detailName: return "detail_now"
+            
+        case .reviewName(let row): return "review_name_\(row)"
+        case .reviewText(let row): return "review_text_\(row)"
+        case .reviewRating(let row): return "review_rating(\(row)"
             
         }
     }

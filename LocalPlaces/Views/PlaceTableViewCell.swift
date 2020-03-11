@@ -70,7 +70,7 @@ class PlaceTableViewCell: UITableViewCell {
             ratingLabel.text = ""
             nameLabel.text = ""
             openImageView.image = nil
-            openImageView.accessibilityLabel = ""
+            openImageView.accessibilityValue = Accessibility.statusNone
             return
         }
         
@@ -84,12 +84,12 @@ class PlaceTableViewCell: UITableViewCell {
         
         if place.isOpenNow == true {
             openImageView.image = #imageLiteral(resourceName: "icon_open")
-            openImageView.accessibilityLabel = Accessibility.statusOpen
+            openImageView.accessibilityValue = Accessibility.statusOpen
         } else if place.isOpenNow == false {
             openImageView.image = #imageLiteral(resourceName: "icon_closed")
-            openImageView.accessibilityLabel = Accessibility.statusClosed
+            openImageView.accessibilityValue = Accessibility.statusClosed
         } else {
-            openImageView.accessibilityLabel = ""
+            openImageView.accessibilityValue = Accessibility.statusNone
             openImageView.image = nil
         }
         
